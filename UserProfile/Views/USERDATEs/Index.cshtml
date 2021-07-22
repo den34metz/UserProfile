@@ -1,0 +1,101 @@
+﻿@model IEnumerable<UserProfile.USERDATE>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DATETAKEN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DATENEXTDUE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EDIPI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CERT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CERTNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VERIFIED)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VERIFIED_BY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.verifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TRAINTITLE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DATESCHED)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TRAINING.TRAIN_TITLE)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATETAKEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATENEXTDUE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EDIPI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CERT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CERTNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VERIFIED)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VERIFIED_BY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.verifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRAINTITLE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATESCHED)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRAINING.TRAIN_TITLE)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.DATETAKENID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.DATETAKENID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.DATETAKENID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<UserProfile.TRAINING>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Trainings</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TRAIN_TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TRAIN_DETAILS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FREQUENCY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLASS_DUR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIN_ATTEND)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAX_ATTEND)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ATCTS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MANDATED_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.URL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRAIN_TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRAIN_DETAILS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TYPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FREQUENCY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLASS_DUR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIN_ATTEND)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAX_ATTEND)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATCTS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MANDATED_BY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.URL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TRAIN_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TRAIN_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TRAIN_ID })
+        </td>
+    </tr>
+}
+
+</table>

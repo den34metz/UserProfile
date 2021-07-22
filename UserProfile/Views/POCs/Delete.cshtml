@@ -1,0 +1,200 @@
+﻿@model UserProfile.POC
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>POC</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.POC_LAST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POC_LAST)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POC_FIRST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POC_FIRST)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POC_MI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POC_MI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RANK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RANK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ORG_LOC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORG_LOC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AKO_LOGIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AKO_LOGIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ALT_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ALT_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CAC_EDIPI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAC_EDIPI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE_DSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE_DSN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE_COMM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE_COMM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE_EMERG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE_EMERG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAST_VERIFIED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAST_VERIFIED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAST_UPDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAST_UPDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAST_UPDATE_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAST_UPDATE_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POC_AVATAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POC_AVATAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANY_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANY_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CAC_EDIPI_LAST_UPDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAC_EDIPI_LAST_UPDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OVERRIDE_EMAIL_UPDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OVERRIDE_EMAIL_UPDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LAST_LOGIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LAST_LOGIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAYS_LAST_LOGIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAYS_LAST_LOGIN)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>@ViewBag.Title - User Profile</title>
+
+    @* <link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap-FileUpload.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/datatables.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    @*<script src="~/Scripts/popper.min.js"></script>*@
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/Scripts/picker.js"></script>
+    <script src="~/Scripts/picker.date.js"></script>
+    <script src="~/Scripts/picker.time.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/profileMain.js"></script>
+
+
+
+    <link href="~/Content/fontawesome5.11.2/css/all.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-FileUpload.css" rel="stylesheet" />
+    <link href="~/Content/classic.css" rel="stylesheet" />
+    <link href="~/Content/classic.date.css" rel="stylesheet" />
+    <link href="~/Content/classic.time.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-spacelabV4.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Scripts/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    @* @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        @Html.ActionLink("User Profile", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           @* <ul class="navbar-nav mr-auto">
+                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link active" })</li>
+                <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })</li>
+            </ul>*@
+        </div>
+        <p class="nav navbar-text navbar-right">Hello, @User.Identity.Name!</p>
+    </nav>
+  
+   
+        @RenderBody()
+
+        <footer id="mainFooter">
+
+            <div id="mainFooterDiv" class="navbar-nav">
+                <ul>
+                    <li><i class="fas fa-hand-point-right" style="font-size:25px;color:red;"></i>Overdue</li>
+                    <li><i class="fas fa-hand-point-right" style="font-size:25px;color:green;"></i>Compliant</li>
+                    <li><i class="fas fa-hand-point-right" style="font-size:25px;color:rgb(249, 249, 6);"></i>Pending Verification</li>
+                    <li><i class="fas fa-hand-point-right" style="font-size:25px;color:rgb(251, 186, 90);"></i>Coming Due</li>
+           @*         <li><i class="fas fa-hand-point-right" style="font-size:25px;color:rgb(255, 255, 255);"></i> NOT Started or Trainings Compliant </li>*@
+                </ul>
+            </div>
+            <p id="footerNote">&copy; @DateTime.Now.Year - User Profile</p>
+        </footer>
+ 
+
+    @* @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
+</body>
+</html>

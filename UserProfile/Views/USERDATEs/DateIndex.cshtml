@@ -1,0 +1,29 @@
+﻿@model IEnumerable<UserProfile.Models.UserDatesModel>
+@{
+    ViewBag.Title = "DateIndex";
+}
+
+<h2>DateIndex</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.DATETAKENID)</th>
+            <th>@Html.DisplayNameFor(m => m.DATETAKEN)</th>
+           @* <th>@Html.DisplayNameFor(m => m.DATENEXTDUE)</th>*@
+            <th>@Html.DisplayNameFor(m => m.EDIPI)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dates in Model)
+        {
+            <tr>
+                <td>@dates.DATETAKENID</td>
+                <td>@dates.DATETAKEN</td>
+                @*@<td>@dates.DATENEXTDUE/td>*@
+                <td>@dates.EDIPI</td>
+            </tr>
+
+        }
+    </tbody>
+</table>    

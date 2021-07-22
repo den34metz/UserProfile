@@ -1,0 +1,134 @@
+﻿@model IEnumerable<UserProfile.POC>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Personnel</h2>
+
+<p>
+   @* @Html.ActionLink("List of Users", "Index", "POCs")
+    @Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.POC_LAST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.POC_FIRST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.POC_MI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RANK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORG_LOC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AKO_LOGIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CAC_EDIPI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE_DSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE_COMM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE_EMERG)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.LAST_UPDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LAST_UPDATE_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.POC_AVATAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMPANY_ID)
+        </th>
+ 
+        <th>
+            @Html.DisplayNameFor(model => model.LAST_LOGIN)
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.POC_LAST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.POC_FIRST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.POC_MI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RANK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORG_LOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AKO_LOGIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CAC_EDIPI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE_DSN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE_COMM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE_EMERG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LAST_UPDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LAST_UPDATE_BY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.POC_AVATAR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMPANY_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LAST_LOGIN)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.POC_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.POC_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.POC_ID })
+        </td>
+    </tr>
+}
+
+</table>

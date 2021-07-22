@@ -1,0 +1,679 @@
+﻿@model UserProfile.ViewModels.TeamPocsViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+
+}
+<h5>@ViewBag.Operation</h5>
+
+<div class="row">
+    <div class="col-md-2" id="avatarCol">
+        <table class="table table-borderless">
+            <thead>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Pocs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.POC_AVATAR)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.POC_AVATAR)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <img src="/picture/nsc/images/avatars/21341.jpg" />
+    </div>
+
+    @*  <div id="dateTakenModal">
+            @Html.Partial("DateCertModal");
+        </div>*@
+
+    <div class="col-md-3">
+        <table class="table table-borderless">
+            <thead>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Pocs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.EMAIL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EMAIL)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.SEMAIL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SEMAIL)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.CAC_EDIPI)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CAC_EDIPI)
+                        </td>
+                    </tr>
+
+
+
+                }
+            </tbody>
+
+
+
+        </table>
+    </div>
+
+    <div class="col-md-2">
+        <table class="table table-borderless" id="phoneTbl">
+            <thead id="phoneTblHead">
+                <tr>
+                    <th>
+                        Phone Numbers
+                    </th>
+                    <th id="addPhoneBtn">
+                        <button type="button" class="btn btn-secondary btn-sm" title="Add Phone # ">+</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Pocs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.PHONE_COMM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PHONE_COMM)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.PHONE_DSN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PHONE_DSN)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.PHONE_EMERG)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PHONE_EMERG)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="col-md-4">
+        <table class="table table-borderless" id="rightTbl">
+            <thead>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Pocs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.AKO_LOGIN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AKO_LOGIN)
+                        </td>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.CAC_EDIPI)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CAC_EDIPI)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.RT_DESCRIPTION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RT_DESCRIPTION)
+                        </td>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.ORG)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ORG)
+                        </td>
+                    </tr>
+                }
+                @foreach (var item in Model.Teams)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(modelItem => item.TEAM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TEAM)
+                        </td>
+                        <td>
+                            @Html.Label("DIV: ")
+                        </td>
+                        <td>
+                            @switch (item.T_PARENT)
+                            {
+                                case 4:
+                                    @Html.Label("Computing & System Services");
+                                    break;
+                                case 53:
+                                    @Html.Label("Computing & System Services");
+                                    break;
+                                // case 39:
+                                // return "Operations"
+                                // break;
+                                case 19:
+                                    @Html.Display("DCOD");
+
+                                    break;
+                                case 38:
+                                    @Html.Display("Network & Transport");
+
+                                    break;
+                                case 47:
+                                    @Html.Display("Security");
+
+                                    break;
+                                case 15:
+                                    @Html.Display("LANDWARNET");
+
+                                    break;
+                                default:
+
+                                    @Html.Label("");
+
+                                    break;
+
+                            }
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div id="headerCol" class="col-sm-7">
+        <table id="trainingTable" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered" width="100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>DateTakenId</th>
+                    <th>Edipi</th>
+                    <th>Status</th>
+                    <th>Verified</th>
+                    <th>Training</th>
+                    <th>Date Taken</th>
+                    <th>Next Due</th>
+                    <th>Days util Due</th>
+                    <th>Scheduled</th>
+                    <th>Cert</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <div id="verified" style="display:none;">Verified</div>
+
+                @*<div class="spanner">
+                        <div class="loader"></div>
+                        <div id="spinnerTxt" style="font-size: 26px; color: black; font-weight: bold;">Loading...</div>
+                    </div>*@
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4" style="margin-left: 3em;">
+        <table class="table table-borderless" id="accountsTbl">
+            <thead id="accountTblHead">
+                <tr>
+                    <td>
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a class="nav-link active" data-toggle="tab" href="#accounts">Accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#rbacs">RBACs</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.Teams)
+                {
+                    <tr>
+                        <td>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="accounts">
+                                    @Html.DisplayFor(modelItem => item.TEAM)
+                                </div>
+
+
+                                <div class="tab-pane fade" id="rbacs">
+                                    @Html.DisplayFor(modelItem => item.CAC_EDIPI)
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- MODAL FOR DISPLAYING DETAILS OF TRAININGS -->
+<div id="modalWrapper">
+    <form name="newTraining" id="newTraining" enctype='multipart/form-data' method="post">
+        <div class="modal fade" id="addTrainingModal" tabindex="-1" role="dialog" aria-labelledby="trainingModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+                <div class="modal-content" id="modalContent">
+
+                    <div class="modal-header" id="modalHeader">Training</div>
+                    <div class="modal-body" id="newTrainBody">
+
+                        <div class="row">
+                            <div id="trainId" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label>
+                                    <input type="text" class="form-control" id="txtTrainId" name="txtTrainId" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" id="trainTitle">
+                                <div class="form-group">
+                                    <label for="inputName">Title: </label>
+                                    <input type="text" class="form-control" id="txtTrainTitle" name="txtTrainTitle" readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="trainLoc">
+                                <div class="form-group">
+                                    <label for="inputName">Location: </label>
+                                    <input type="text" class="form-control" id="txtTrainLoc" name="txtTrainLoc" readonly />
+                                    @* <div class="invalid-feedback" id="locValid" style="display:none">Please enter location.</div>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" id="trainType">
+                                <div class="form-group">
+                                    <label for="inputName">Type: </label>
+                                    <input type="text" class="form-control" id="txtType" name="txtType" readonly />
+                                    @* <div class="invalid-feedback" id="typeValid" style="display:none">Invalid selection</div>*@
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" id="trainFreq">
+                                <div class="form-group">
+                                    <label for="inputName">Frequency: </label>
+                                    <input type="text" class="form-control" id="txtFreq" name="txtFreq" readonly />
+                                    @* <div class="invalid-feedback" id="freqValid" style="display:none">Invalid selection</div>*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="optionRow">
+                            <div class="col-lg-1" id="exclam">
+                                <i class="fas fa-exclamation-circle" style="font-size: 20px; color: blue; cursor: pointer;" id="faExclam" title="ATCTS Upload Info"></i>
+                            </div>
+                            <div class="form-group" id="radioBtnYesNo">
+                                <p>ATCTS Upload Required</p>
+                                <!-- Group of default radios - option 1 -->
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="group1" name="groupOfDefaultRadios" value="Yes" checked readonly>
+                                    <label class="custom-control-label" for="group1">Yes</label>
+                                </div>
+
+                                <!-- Group of default radios - option 2 -->
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="group2" name="groupOfDefaultRadios" value="No" readonly>
+                                    <label class="custom-control-label" for="group2">No</label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="durationFormGroup">
+                                <p>Class Duration: </p>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="text" class="form-control" id="txtDur" name="txtDur" readonly />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group row" id="urlRow">
+                            <label for="title" class="col-lg-1 col-form-label" id="urlLb">URL:</label>
+                            <div class="col-lg-11">
+                                <input type="text" class="form-control" id="urlInput" name="urlInput" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group" id="txtArea">
+                                <label for="txtarea">Details/Instructions</label>
+                                <textarea rows="6" class="form-control" id="txtarea2" name="txtarea" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="row" id="btnRow">
+                            <button class="btn btn-primary" id="btnClose" data-dismiss="modal" type="button">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!-- Display ATCTS details Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <!-- Modal content-->
+        <div class="modal-content" style="font-size:small">
+            <div class="modal-header" id="atctsHeader">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Upload Certs to ATCTS</h4>
+            </div>
+            <div class="modal-body">
+                <p>Upload the certificate into ATCTS under:</br> <span class="boldText">Army Minimum Required Training & Job Skills Practical Evaluation:</span></p>
+                &nbsp;&nbsp; <p>-Under the Army Minimum Required Training: Click "Add Training"</p>
+                &nbsp;&nbsp; <p>-Training Completed: "Add your completed Training name"</p>
+                &nbsp;&nbsp; <p>-Date Obtained: Date on your certificate.</p>
+                <br/>
+                <p>AND DO THE FOLLOWING:</p>
+
+                <p> Under the "Job Skills Practical Evaluation" section: Click on "Action" button located on the right hand side of the screen</p>
+                <p> Click on "Record on the Job Skills"</p>
+                <p> Add title of the training.</p>
+                <p> Date Completed</p>
+                <p> Conducted By</p>
+                <p> Click "Record Training" and then upload the PDF version of your training.</p>
+                <br/>
+                <p id="colorTxt">**PLEASE DELETE/REMOVE OLD CERTIFICATE IN BOTH SECTIONS**</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL FOR ADDING DATES AND CERTIFICATES -->
+<div id="modalWrapper">
+    @* <form method="post" asp-action="Index" asp-controller="Home">*@
+    <form id="userDateForm" enctype="multipart/form-data" method="post">
+        <div class="modal fade" id="dateTimeModal" tabindex="-1" role="dialog" aria-labelledby="dateTimeModalCenterTitle" aria-hidden="false">
+            <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+                <div class="modal-content" id="addTrainingModalContent">
+                    @*<%using (Html.BeginForm("UpdateQuantity", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                        { %>*@
+                    <div class="modal-header" id="modalHeader">Add Date & Cert</div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div id="trainId" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text" class="form-control" id="txtTrainId" name="txtTrainId" />
+                                </div>
+                            </div>
+
+                            <div id="EDIPI" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text" class="form-control" id="txtEdipi" name="txtEdipi" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" id="trainTitle">
+                                <div class="form-group">
+                                    <textArea type="text" class="form-control" id="txtUpdateTrainTitle" name="txtUpdateTrainTitle" style="background:white" readonly></textArea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group" id="datePickerFormGroup">
+                            <label class="control-label">Date Taken: </label> <input type='text' class="datepicker" name="date" id="clasDate" />
+                        </div>
+                    </div>
+
+                    <div class="custom-file" id="fileupload">
+                        <input type="file" onchange="showFile(this)" class="custom-file-input" id="inputGroupFile01"
+                               aria-describedby="inputGroupFileAddon01" name="file">
+                        <label class="custom-file-label" for="inputGroupFile01">Upload Certificate</label>
+                        <label name="errorFile" id="errorFile"></label>
+                    </div>
+
+                    <div class="row" id="btRow">
+                        <button class="btn btn-primary" id="btClose" data-dismiss="modal" type="button">Close</button>
+                        <button class="btn btn-primary" id="btSubmit" type="submit" value="Training Tracker" onclick="saveModalData('Insert')" onsubmit="">Save</button>
+                        <div id="errorMessage"></div>
+                    </div>
+                    @*<%} %>*@
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- MODAL FOR UPDATING DATES AND CERTIFICATES -->
+<div id="modalWrapper">
+    @* <form method="post" asp-action="Index" asp-controller="Home">*@
+    <form id="userDateForm" enctype="multipart/form-data" method="post">
+        <div class="modal fade" id="updateDateCertModal" tabindex="-1" role="dialog" aria-labelledby="updateDateCertModalCenterTitle" aria-hidden="false">
+            <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+                <div class="modal-content" id="updateTrainingModalContent">
+                    @*<%using (Html.BeginForm("UpdateQuantity", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                        { %>*@
+                    <div class="modal-header" id="modalHeader">Update Date & Cert</div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div id="trainId" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text" class="form-control" id="txtTrainId" name="txtTrainId" />
+                                </div>
+                            </div>
+
+                            <div id="EDIPI" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text" class="form-control" id="txtEdipi" name="txtEdipi" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" id="trainTitle">
+                                <div class="form-group">
+                                    <textArea type="text" class="form-control" id="updateTrainTitle" name="updateTrainTitle" style="background:white" readonly></textArea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group" id="datePickerFormGroup">
+                            <label class="control-label">Date Taken: </label> <input type='text' class="datepicker" name="date" id="classDate" />
+                        </div>
+                    </div>
+
+                    <div class="custom-file" id="fileupload">
+                        <input type="file" onchange="showFile(this)" class="custom-file-input" id="inputGroupFile02"
+                               aria-describedby="inputGroupFileAddon02" name="file">
+                        <label class="custom-file-label" for="inputGroupFile01">Upload Certificate</label>
+                        <label name="errorFile" id="errorFile"></label>
+                    </div>
+
+                    <div class="row" id="btRow">
+                        <button class="btn btn-primary" id="btClose" data-dismiss="modal" type="button">Close</button>
+                        <button class="btn btn-primary" id="btSubmit" type="submit" value="Training Tracker" onclick="saveModalData('Update')" onsubmit="">Save</button>
+                        <div id="errorMessage"></div>
+                    </div>
+                    @*<%} %>*@
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- MODAL FOR SCHEDULING DATES FOR TRAININGS -->
+<!--<div id="modalWrapper">
+    <form name="scheduledDates" enctype='multipart/form-data' method="post" id="scheduledDates">
+        <div class="modal fade" id="schedDatesModal" tabindex="-1" role="dialog" aria-labelledby="schedDatesModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+                <div class="modal-content" id="scheduledDatesContent">
+
+                    <div class="modal-header" id="modalHeader">Schedule Date for Training</div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div id="schedTrainId" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text"
+                                                                           class="form-control" id="txtSchedTrainId" name="txtSchedTrainId" />
+                                </div>
+                            </div>
+                            <div id="dateTimeId" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text"
+                                                                           class="form-control" id="txtDateTimeId" name="txtDateTimeId" />
+                                </div>
+                            </div>
+                            <div id="schedEDIPI" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text"
+                                                                           class="form-control" id="txtSchedEdipi" name="txtSchedEdipi" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dateTakenId" style="display: none">
+                            <div class="form-group">
+                                <label for="inputName"></label> <input type="text"
+                                                                       class="form-control" id="txtDateTakenId" name="txtDateTakenId" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" id="schedTrainTitle">
+                                <div class="form-group">
+                                    <textArea type="text" class="form-control"
+                                              id="txtSchedTrainTitle" name="txtSchedTrainTitle" style="border:none; readonly"></textArea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="typeRow">
+                            <label for="type" class="col-lg-3 col-form-label" id="schedLb">Schedule Date:</label>
+                            <div class="col-lg-3">
+                                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-3" id="typeDropdown">
+                                    <select class="form-control" id="selectSched" name="selectSched">
+                                        <option>Select Date</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="btnSchedRow">
+                        <button class="btn btn-primary" id="btClose" data-dismiss="modal" type"button">Close</button>
+                        <button class="btn btn-primary" id="btSubmit" type="submit" value="Training Tracker" onclick="saveSchedDate()" onsubmit="">Save</button>
+                        <div id="errorMessage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>-->
+<!-- MODAL FOR SCHEDULING DATES FOR TRAININGS -->
+<div id="modalWrapper">
+    <form name="scheduledDates" enctype='multipart/form-data' method="post" id="scheduledDates">
+        <div class="modal fade" id="schedDatesModal" tabindex="-1" role="dialog" aria-labelledby="schedDatesModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+                <div class="modal-content" id="scheduledDatesContent">
+
+                    <div class="modal-header" id="modalHeader">Schedule Date for Training</div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div id="schedTrainId" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text"
+                                                                           class="form-control" id="txtSchedTrainId" name="txtSchedTrainId" />
+                                </div>
+                            </div>
+                            <div id="dateTimeId" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text"
+                                                                           class="form-control" id="txtDateTimeId" name="txtDateTimeId" />
+                                </div>
+                            </div>
+                            <div id="schedEDIPI" style="display: none">
+                                <div class="form-group">
+                                    <label for="inputName"></label> <input type="text"
+                                                                           class="form-control" id="txtSchedEdipi" name="txtSchedEdipi" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dateTakenId" style="display: none">
+                            <div class="form-group">
+                                <label for="inputName"></label> <input type="text"
+                                                                       class="form-control" id="txtDateTakenId" name="txtDateTakenId" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" id="schedTrainTitle">
+                                <div class="form-group">
+                                    <textArea type="text" class="form-control"
+                                              id="txtSchedTrainTitle" name="txtSchedTrainTitle" style="border:none; readonly"></textArea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="typeRow">
+                            <label for="type" class="col-lg-3 col-form-label" id="schedLb">Schedule Date:</label>
+                            <div class="col-lg-3">
+                                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-3" id="typeDropdown">
+                                    <select class="form-control" id="selectSched" name="selectSched">
+                                        <option>Select Date</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="btnSchedRow">
+                        <button class="btn btn-primary" id="btClose" data-dismiss="modal" type"button">Close</button>
+                        <button class="btn btn-primary" id="btSubmit" type="submit" value="Training Tracker" onclick="saveSchedDate()" onsubmit="">Save</button>
+                        <div id="errorMessage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

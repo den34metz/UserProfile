@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TrainingTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TrainingTracker.dbo.CONST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CONST">
+          <Key>
+            <PropertyRef Name="PARAM" />
+          </Key>
+          <Property Name="PARAM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VAL" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TrainingTracker.dbo.POC_TRAININGS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="POC_TRAININGS">
+          <Key>
+            <PropertyRef Name="POC_TRAIN_ID" />
+          </Key>
+          <Property Name="POC_TRAIN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EDIPI" Type="int" />
+          <Property Name="TRAIN_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="REQUIRED">
+          <Key>
+            <PropertyRef Name="REQ_ID" />
+          </Key>
+          <Property Name="REQ_ID" Type="int" Nullable="false" />
+          <Property Name="REQ_NAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RPT_ELE">
+          <Key>
+            <PropertyRef Name="RPT_ELE_ID" />
+          </Key>
+          <Property Name="RPT_ELE_ID" Type="int" Nullable="false" />
+          <Property Name="RPT_ELE_NAME" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TrainingTracker.dbo.RPT_ELE_TRAINING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RPT_ELE_TRAINING">
+          <Key>
+            <PropertyRef Name="RPT_ELE_ID" />
+            <PropertyRef Name="TRAIN_ID" />
+          </Key>
+          <Property Name="RPT_ELE_ID" Type="int" Nullable="false" />
+          <Property Name="TRAIN_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SCHEDDATES">
+          <Key>
+            <PropertyRef Name="SCHEDDATEID" />
+          </Key>
+          <Property Name="SCHEDDATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TRAINID" Type="int" />
+          <Property Name="EDIPI" Type="int" />
+          <Property Name="DATESCHED" Type="datetime2" Precision="7" />
+          <Property Name="TRAINTITLE" Type="varchar" MaxLength="75" />
+          <Property Name="DATETIMEID" Type="int" />
+        </EntityType>
+        <EntityType Name="TRAIN_DATE_TIME">
+          <Key>
+            <PropertyRef Name="DATE_TIME_ID" />
+          </Key>
+          <Property Name="DATE_TIME_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TRAIN_DATE_TIME" Type="datetime" />
+          <Property Name="DATE_CREATED" Type="date" />
+          <Property Name="DATE_TAKEN" Type="datetime2" Precision="7" />
+          <Property Name="LOC" Type="varchar" MaxLength="75" />
+          <Property Name="TRAIN_ID" Type="int" />
+          <Property Name="TRAIN_TITLE" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TRAININGS">
+          <Key>
+            <PropertyRef Name="TRAIN_ID" />
+          </Key>
+          <Property Name="TRAIN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TRAIN_TITLE" Type="varchar" MaxLength="75" />
+          <Property Name="TRAIN_DETAILS" Type="varchar(max)" />
+          <Property Name="TYPE" Type="varchar" MaxLength="50" />
+          <Property Name="FREQUENCY" Type="varchar" MaxLength="50" />
+          <Property Name="CLASS_DUR" Type="int" />
+          <Property Name="MIN_ATTEND" Type="varchar" MaxLength="10" />
+          <Property Name="MAX_ATTEND" Type="varchar" MaxLength="10" />
+          <Property Name="ATCTS" Type="varchar" MaxLength="20" />
+          <Property Name="MANDATED_BY" Type="varchar" MaxLength="50" />
+          <Property Name="URL" Type="varchar" MaxLength="125" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TrainingTracker.dbo.TRAININGS_TRAIN_DATE_TIME' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TRAININGS_TRAIN_DATE_TIME">
+          <Key>
+            <PropertyRef Name="TRAIN_ID" />
+            <PropertyRef Name="DATE_TIME_ID" />
+          </Key>
+          <Property Name="TRAIN_ID" Type="int" Nullable="false" />
+          <Property Name="DATE_TIME_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERDATES">
+          <Key>
+            <PropertyRef Name="DATETAKENID" />
+          </Key>
+          <Property Name="DATETAKENID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATETAKEN" Type="date" />
+          <Property Name="DATENEXTDUE" Type="date" />
+          <Property Name="TRAIN_ID" Type="int" />
+          <Property Name="EDIPI" Type="int" />
+          <Property Name="CERT" Type="varbinary(max)" />
+          <Property Name="CERTNAME" Type="nvarchar" MaxLength="80" />
+          <Property Name="VERIFIED" Type="nvarchar" MaxLength="5" />
+          <Property Name="VERIFIED_BY" Type="nvarchar" MaxLength="75" />
+          <Property Name="verifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="TRAINTITLE" Type="nvarchar" MaxLength="75" />
+          <Property Name="DATESCHED" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TrainingTracker.dbo.ViewTrainingData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewTrainingData">
+          <Key>
+            <PropertyRef Name="TRAINID" />
+            <PropertyRef Name="REQ_ID" />
+            <PropertyRef Name="RPT_ELE_ID" />
+          </Key>
+          <Property Name="TRAINID" Type="int" Nullable="false" />
+          <Property Name="TRAIN_TITLE" Type="varchar" MaxLength="75" />
+          <Property Name="TYPE" Type="varchar" MaxLength="50" />
+          <Property Name="FREQUENCY" Type="varchar" MaxLength="50" />
+          <Property Name="REQ_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="RPT_ELE_NAME" Type="varchar" MaxLength="25" />
+          <Property Name="TRAIN_DETAILS" Type="varchar(max)" />
+          <Property Name="ATCTS" Type="varchar" MaxLength="20" />
+          <Property Name="MANDATED_BY" Type="varchar" MaxLength="50" />
+          <Property Name="URL" Type="varchar" MaxLength="125" />
+          <Property Name="REQ_ID" Type="int" Nullable="false" />
+          <Property Name="RPT_ELE_ID" Type="int" Nullable="false" />
+          <Property Name="CLASS_DUR" Type="int" />
+        </EntityType>
+        <Association Name="FK18l6w1ru06f6hpdqic1pyrrrh">
+          <End Role="TRAININGS" Type="Self.TRAININGS" Multiplicity="0..1" />
+          <End Role="USERDATES" Type="Self.USERDATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRAININGS">
+              <PropertyRef Name="TRAIN_ID" />
+            </Principal>
+            <Dependent Role="USERDATES">
+              <PropertyRef Name="TRAIN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKbbd603gperd03roil0edu0seh">
+          <End Role="RPT_ELE" Type="Self.RPT_ELE" Multiplicity="1" />
+          <End Role="RPT_ELE_TRAINING" Type="Self.RPT_ELE_TRAINING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RPT_ELE">
+              <PropertyRef Name="RPT_ELE_ID" />
+            </Principal>
+            <Dependent Role="RPT_ELE_TRAINING">
+              <PropertyRef Name="RPT_ELE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SpAddUserDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DATETAKEN" Type="date" Mode="In" />
+          <Parameter Name="NEXTDUE" Type="date" Mode="In" />
+          <Parameter Name="EDIPI" Type="int" Mode="In" />
+          <Parameter Name="TRAINID" Type="int" Mode="In" />
+          <Parameter Name="CERT" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="CERTNAME" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SpInsertUserDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DATETAKEN" Type="date" Mode="In" />
+          <Parameter Name="DATENEXTDUE" Type="date" Mode="In" />
+          <Parameter Name="EDIPI" Type="int" Mode="In" />
+          <Parameter Name="TRAIN_ID" Type="int" Mode="In" />
+          <Parameter Name="CERT" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="CERTNAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="DATETAKENID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="TrainingTrackerModelStoreContainer">
+          <EntitySet Name="REQUIRED" EntityType="Self.REQUIRED" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RPT_ELE" EntityType="Self.RPT_ELE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SCHEDDATES" EntityType="Self.SCHEDDATES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRAIN_DATE_TIME" EntityType="Self.TRAIN_DATE_TIME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRAININGS" EntityType="Self.TRAININGS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERDATES" EntityType="Self.USERDATES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONST" EntityType="Self.CONST" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CONST].[PARAM] AS [PARAM], 
+    [CONST].[VAL] AS [VAL]
+    FROM [dbo].[CONST] AS [CONST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="POC_TRAININGS" EntityType="Self.POC_TRAININGS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [POC_TRAININGS].[POC_TRAIN_ID] AS [POC_TRAIN_ID], 
+    [POC_TRAININGS].[EDIPI] AS [EDIPI], 
+    [POC_TRAININGS].[TRAIN_ID] AS [TRAIN_ID]
+    FROM [dbo].[POC_TRAININGS] AS [POC_TRAININGS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RPT_ELE_TRAINING" EntityType="Self.RPT_ELE_TRAINING" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RPT_ELE_TRAINING].[RPT_ELE_ID] AS [RPT_ELE_ID], 
+    [RPT_ELE_TRAINING].[TRAIN_ID] AS [TRAIN_ID]
+    FROM [dbo].[RPT_ELE_TRAINING] AS [RPT_ELE_TRAINING]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TRAININGS_TRAIN_DATE_TIME" EntityType="Self.TRAININGS_TRAIN_DATE_TIME" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TRAININGS_TRAIN_DATE_TIME].[TRAIN_ID] AS [TRAIN_ID], 
+    [TRAININGS_TRAIN_DATE_TIME].[DATE_TIME_ID] AS [DATE_TIME_ID]
+    FROM [dbo].[TRAININGS_TRAIN_DATE_TIME] AS [TRAININGS_TRAIN_DATE_TIME]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewTrainingData" EntityType="Self.ViewTrainingData" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewTrainingData].[TRAINID] AS [TRAINID], 
+    [ViewTrainingData].[TRAIN_TITLE] AS [TRAIN_TITLE], 
+    [ViewTrainingData].[TYPE] AS [TYPE], 
+    [ViewTrainingData].[FREQUENCY] AS [FREQUENCY], 
+    [ViewTrainingData].[REQ_NAME] AS [REQ_NAME], 
+    [ViewTrainingData].[RPT_ELE_NAME] AS [RPT_ELE_NAME], 
+    [ViewTrainingData].[TRAIN_DETAILS] AS [TRAIN_DETAILS], 
+    [ViewTrainingData].[ATCTS] AS [ATCTS], 
+    [ViewTrainingData].[MANDATED_BY] AS [MANDATED_BY], 
+    [ViewTrainingData].[URL] AS [URL], 
+    [ViewTrainingData].[REQ_ID] AS [REQ_ID], 
+    [ViewTrainingData].[RPT_ELE_ID] AS [RPT_ELE_ID], 
+    [ViewTrainingData].[CLASS_DUR] AS [CLASS_DUR]
+    FROM [dbo].[ViewTrainingData] AS [ViewTrainingData]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK18l6w1ru06f6hpdqic1pyrrrh" Association="Self.FK18l6w1ru06f6hpdqic1pyrrrh">
+            <End Role="TRAININGS" EntitySet="TRAININGS" />
+            <End Role="USERDATES" EntitySet="USERDATES" />
+          </AssociationSet>
+          <AssociationSet Name="FKbbd603gperd03roil0edu0seh" Association="Self.FKbbd603gperd03roil0edu0seh">
+            <End Role="RPT_ELE" EntitySet="RPT_ELE" />
+            <End Role="RPT_ELE_TRAINING" EntitySet="RPT_ELE_TRAINING" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TrainingTrackerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="REQUIRED">
+          <Key>
+            <PropertyRef Name="REQ_ID" />
+          </Key>
+          <Property Name="REQ_ID" Type="Int32" Nullable="false" />
+          <Property Name="REQ_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RPT_ELE">
+          <Key>
+            <PropertyRef Name="RPT_ELE_ID" />
+          </Key>
+          <Property Name="RPT_ELE_ID" Type="Int32" Nullable="false" />
+          <Property Name="RPT_ELE_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RPT_ELE_TRAINING" Relationship="Self.FKbbd603gperd03roil0edu0seh" FromRole="RPT_ELE" ToRole="RPT_ELE_TRAINING" />
+        </EntityType>
+        <EntityType Name="SCHEDDATE">
+          <Key>
+            <PropertyRef Name="SCHEDDATEID" />
+          </Key>
+          <Property Name="SCHEDDATEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TRAINID" Type="Int32" />
+          <Property Name="EDIPI" Type="Int32" />
+          <Property Name="DATESCHED" Type="DateTime" Precision="7" />
+          <Property Name="TRAINTITLE" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="DATETIMEID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TRAIN_DATE_TIME">
+          <Key>
+            <PropertyRef Name="DATE_TIME_ID" />
+          </Key>
+          <Property Name="DATE_TIME_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TRAIN_DATE_TIME1" Type="DateTime" Precision="3" />
+          <Property Name="DATE_CREATED" Type="DateTime" Precision="0" />
+          <Property Name="DATE_TAKEN" Type="DateTime" Precision="7" />
+          <Property Name="LOC" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="TRAIN_ID" Type="Int32" />
+          <Property Name="TRAIN_TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TRAINING">
+          <Key>
+            <PropertyRef Name="TRAIN_ID" />
+          </Key>
+          <Property Name="TRAIN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TRAIN_TITLE" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="TRAIN_DETAILS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FREQUENCY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CLASS_DUR" Type="Int32" />
+          <Property Name="MIN_ATTEND" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MAX_ATTEND" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ATCTS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MANDATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USERDATES" Relationship="Self.FK18l6w1ru06f6hpdqic1pyrrrh" FromRole="TRAININGS" ToRole="USERDATES" />
+        </EntityType>
+        <EntityType Name="USERDATE">
+          <Key>
+            <PropertyRef Name="DATETAKENID" />
+          </Key>
+          <Property Name="DATETAKENID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATETAKEN" Type="DateTime" Precision="0" />
+          <Property Name="DATENEXTDUE" Type="DateTime" Precision="0" />
+          <Property Name="TRAIN_ID" Type="Int32" />
+          <Property Name="EDIPI" Type="Int32" />
+          <Property Name="CERT" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CERTNAME" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="VERIFIED" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="VERIFIED_BY" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="verifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TRAINTITLE" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="DATESCHED" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TRAINING" Relationship="Self.FK18l6w1ru06f6hpdqic1pyrrrh" FromRole="USERDATES" ToRole="TRAININGS" />
+        </EntityType>
+        <EntityType Name="POC_TRAININGS">
+          <Key>
+            <PropertyRef Name="POC_TRAIN_ID" />
+          </Key>
+          <Property Name="POC_TRAIN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EDIPI" Type="Int32" />
+          <Property Name="TRAIN_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RPT_ELE_TRAINING">
+          <Key>
+            <PropertyRef Name="RPT_ELE_ID" />
+            <PropertyRef Name="TRAIN_ID" />
+          </Key>
+          <Property Name="RPT_ELE_ID" Type="Int32" Nullable="false" />
+          <Property Name="TRAIN_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RPT_ELE" Relationship="Self.FKbbd603gperd03roil0edu0seh" FromRole="RPT_ELE_TRAINING" ToRole="RPT_ELE" />
+        </EntityType>
+        <EntityType Name="TRAININGS_TRAIN_DATE_TIME">
+          <Key>
+            <PropertyRef Name="TRAIN_ID" />
+            <PropertyRef Name="DATE_TIME_ID" />
+          </Key>
+          <Property Name="TRAIN_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE_TIME_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FKbbd603gperd03roil0edu0seh">
+          <End Role="RPT_ELE" Type="Self.RPT_ELE" Multiplicity="1" />
+          <End Role="RPT_ELE_TRAINING" Type="Self.RPT_ELE_TRAINING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RPT_ELE">
+              <PropertyRef Name="RPT_ELE_ID" />
+            </Principal>
+            <Dependent Role="RPT_ELE_TRAINING">
+              <PropertyRef Name="RPT_ELE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK18l6w1ru06f6hpdqic1pyrrrh">
+          <End Role="TRAININGS" Type="Self.TRAINING" Multiplicity="0..1" />
+          <End Role="USERDATES" Type="Self.USERDATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRAININGS">
+              <PropertyRef Name="TRAIN_ID" />
+            </Principal>
+            <Dependent Role="USERDATES">
+              <PropertyRef Name="TRAIN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TrainingTracker" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="REQUIREDs" EntityType="Self.REQUIRED" />
+          <EntitySet Name="RPT_ELE" EntityType="Self.RPT_ELE" />
+          <EntitySet Name="SCHEDDATES" EntityType="Self.SCHEDDATE" />
+          <EntitySet Name="TRAIN_DATE_TIME" EntityType="Self.TRAIN_DATE_TIME" />
+          <EntitySet Name="TRAININGS" EntityType="Self.TRAINING" />
+          <EntitySet Name="USERDATES" EntityType="Self.USERDATE" />
+          <EntitySet Name="POC_TRAININGS" EntityType="Self.POC_TRAININGS" />
+          <EntitySet Name="RPT_ELE_TRAINING" EntityType="Self.RPT_ELE_TRAINING" />
+          <EntitySet Name="TRAININGS_TRAIN_DATE_TIME" EntityType="Self.TRAININGS_TRAIN_DATE_TIME" />
+          <AssociationSet Name="FKbbd603gperd03roil0edu0seh" Association="Self.FKbbd603gperd03roil0edu0seh">
+            <End Role="RPT_ELE" EntitySet="RPT_ELE" />
+            <End Role="RPT_ELE_TRAINING" EntitySet="RPT_ELE_TRAINING" />
+          </AssociationSet>
+          <AssociationSet Name="FK18l6w1ru06f6hpdqic1pyrrrh" Association="Self.FK18l6w1ru06f6hpdqic1pyrrrh">
+            <End Role="TRAININGS" EntitySet="TRAININGS" />
+            <End Role="USERDATES" EntitySet="USERDATES" />
+          </AssociationSet>
+          <EntitySet Name="CONSTs" EntityType="TrainingTrackerModel.CONST" />
+          <EntitySet Name="ViewTrainingDatas" EntityType="TrainingTrackerModel.ViewTrainingData" />
+          <FunctionImport Name="SpAddUserDates">
+            <Parameter Name="DATETAKEN" Mode="In" Type="DateTime" />
+            <Parameter Name="NEXTDUE" Mode="In" Type="DateTime" />
+            <Parameter Name="EDIPI" Mode="In" Type="Int32" />
+            <Parameter Name="TRAINID" Mode="In" Type="Int32" />
+            <Parameter Name="CERT" Mode="In" Type="Binary" />
+            <Parameter Name="CERTNAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FNSpAddUserDates" EntitySet="USERDATES" ReturnType="Collection(TrainingTrackerModel.USERDATE)">
+            <Parameter Name="DATETAKEN" Mode="In" Type="DateTime" />
+            <Parameter Name="NEXTDUE" Mode="In" Type="DateTime" />
+            <Parameter Name="EDIPI" Mode="In" Type="Int32" />
+            <Parameter Name="TRAINID" Mode="In" Type="Int32" />
+            <Parameter Name="CERT" Mode="In" Type="Binary" />
+            <Parameter Name="CERTNAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SpInsertUserDates">
+            <Parameter Name="DATETAKEN" Mode="In" Type="DateTime" />
+            <Parameter Name="DATENEXTDUE" Mode="In" Type="DateTime" />
+            <Parameter Name="EDIPI" Mode="In" Type="Int32" />
+            <Parameter Name="TRAIN_ID" Mode="In" Type="Int32" />
+            <Parameter Name="CERT" Mode="In" Type="Binary" />
+            <Parameter Name="CERTNAME" Mode="In" Type="String" />
+            <Parameter Name="DATETAKENID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="CONST">
+          <Key>
+            <PropertyRef Name="PARAM" />
+          </Key>
+          <Property Name="PARAM" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VAL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewTrainingData">
+          <Key>
+            <PropertyRef Name="TRAINID" />
+            <PropertyRef Name="REQ_ID" />
+            <PropertyRef Name="RPT_ELE_ID" />
+          </Key>
+          <Property Name="TRAINID" Type="Int32" Nullable="false" />
+          <Property Name="TRAIN_TITLE" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FREQUENCY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REQ_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RPT_ELE_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TRAIN_DETAILS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ATCTS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MANDATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+          <Property Name="REQ_ID" Type="Int32" Nullable="false" />
+          <Property Name="RPT_ELE_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLASS_DUR" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TrainingTrackerModelStoreContainer" CdmEntityContainer="TrainingTracker">
+          <EntitySetMapping Name="REQUIREDs">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.REQUIRED">
+              <MappingFragment StoreEntitySet="REQUIRED">
+                <ScalarProperty Name="REQ_ID" ColumnName="REQ_ID" />
+                <ScalarProperty Name="REQ_NAME" ColumnName="REQ_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RPT_ELE">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.RPT_ELE">
+              <MappingFragment StoreEntitySet="RPT_ELE">
+                <ScalarProperty Name="RPT_ELE_ID" ColumnName="RPT_ELE_ID" />
+                <ScalarProperty Name="RPT_ELE_NAME" ColumnName="RPT_ELE_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCHEDDATES">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.SCHEDDATE">
+              <MappingFragment StoreEntitySet="SCHEDDATES">
+                <ScalarProperty Name="SCHEDDATEID" ColumnName="SCHEDDATEID" />
+                <ScalarProperty Name="TRAINID" ColumnName="TRAINID" />
+                <ScalarProperty Name="EDIPI" ColumnName="EDIPI" />
+                <ScalarProperty Name="DATESCHED" ColumnName="DATESCHED" />
+                <ScalarProperty Name="TRAINTITLE" ColumnName="TRAINTITLE" />
+                <ScalarProperty Name="DATETIMEID" ColumnName="DATETIMEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAIN_DATE_TIME">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.TRAIN_DATE_TIME">
+              <MappingFragment StoreEntitySet="TRAIN_DATE_TIME">
+                <ScalarProperty Name="DATE_TIME_ID" ColumnName="DATE_TIME_ID" />
+                <ScalarProperty Name="TRAIN_DATE_TIME1" ColumnName="TRAIN_DATE_TIME" />
+                <ScalarProperty Name="DATE_CREATED" ColumnName="DATE_CREATED" />
+                <ScalarProperty Name="DATE_TAKEN" ColumnName="DATE_TAKEN" />
+                <ScalarProperty Name="LOC" ColumnName="LOC" />
+                <ScalarProperty Name="TRAIN_ID" ColumnName="TRAIN_ID" />
+                <ScalarProperty Name="TRAIN_TITLE" ColumnName="TRAIN_TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAININGS">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.TRAINING">
+              <MappingFragment StoreEntitySet="TRAININGS">
+                <ScalarProperty Name="TRAIN_ID" ColumnName="TRAIN_ID" />
+                <ScalarProperty Name="TRAIN_TITLE" ColumnName="TRAIN_TITLE" />
+                <ScalarProperty Name="TRAIN_DETAILS" ColumnName="TRAIN_DETAILS" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="FREQUENCY" ColumnName="FREQUENCY" />
+                <ScalarProperty Name="CLASS_DUR" ColumnName="CLASS_DUR" />
+                <ScalarProperty Name="MIN_ATTEND" ColumnName="MIN_ATTEND" />
+                <ScalarProperty Name="MAX_ATTEND" ColumnName="MAX_ATTEND" />
+                <ScalarProperty Name="ATCTS" ColumnName="ATCTS" />
+                <ScalarProperty Name="MANDATED_BY" ColumnName="MANDATED_BY" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERDATES">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.USERDATE">
+              <MappingFragment StoreEntitySet="USERDATES">
+                <ScalarProperty Name="DATETAKENID" ColumnName="DATETAKENID" />
+                <ScalarProperty Name="DATETAKEN" ColumnName="DATETAKEN" />
+                <ScalarProperty Name="DATENEXTDUE" ColumnName="DATENEXTDUE" />
+                <ScalarProperty Name="TRAIN_ID" ColumnName="TRAIN_ID" />
+                <ScalarProperty Name="EDIPI" ColumnName="EDIPI" />
+                <ScalarProperty Name="CERT" ColumnName="CERT" />
+                <ScalarProperty Name="CERTNAME" ColumnName="CERTNAME" />
+                <ScalarProperty Name="VERIFIED" ColumnName="VERIFIED" />
+                <ScalarProperty Name="VERIFIED_BY" ColumnName="VERIFIED_BY" />
+                <ScalarProperty Name="verifiedBy" ColumnName="verifiedBy" />
+                <ScalarProperty Name="TRAINTITLE" ColumnName="TRAINTITLE" />
+                <ScalarProperty Name="DATESCHED" ColumnName="DATESCHED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="TrainingTrackerModel.USERDATE">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="TrainingTrackerModel.Store.SpInsertUserDates">
+                  <ScalarProperty Name="DATETAKENID" ParameterName="DATETAKENID" />
+                  <ScalarProperty Name="CERTNAME" ParameterName="CERTNAME" />
+                  <ScalarProperty Name="CERT" ParameterName="CERT" />
+                  <ScalarProperty Name="TRAIN_ID" ParameterName="TRAIN_ID" />
+                  <ScalarProperty Name="EDIPI" ParameterName="EDIPI" />
+                  <ScalarProperty Name="DATENEXTDUE" ParameterName="DATENEXTDUE" />
+                  <ScalarProperty Name="DATETAKEN" ParameterName="DATETAKEN" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POC_TRAININGS">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.POC_TRAININGS">
+              <MappingFragment StoreEntitySet="POC_TRAININGS">
+                <ScalarProperty Name="POC_TRAIN_ID" ColumnName="POC_TRAIN_ID" />
+                <ScalarProperty Name="EDIPI" ColumnName="EDIPI" />
+                <ScalarProperty Name="TRAIN_ID" ColumnName="TRAIN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RPT_ELE_TRAINING">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.RPT_ELE_TRAINING">
+              <MappingFragment StoreEntitySet="RPT_ELE_TRAINING">
+                <ScalarProperty Name="RPT_ELE_ID" ColumnName="RPT_ELE_ID" />
+                <ScalarProperty Name="TRAIN_ID" ColumnName="TRAIN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAININGS_TRAIN_DATE_TIME">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.TRAININGS_TRAIN_DATE_TIME">
+              <MappingFragment StoreEntitySet="TRAININGS_TRAIN_DATE_TIME">
+                <ScalarProperty Name="TRAIN_ID" ColumnName="TRAIN_ID" />
+                <ScalarProperty Name="DATE_TIME_ID" ColumnName="DATE_TIME_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONSTs">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.CONST">
+              <MappingFragment StoreEntitySet="CONST">
+                <ScalarProperty Name="VAL" ColumnName="VAL" />
+                <ScalarProperty Name="PARAM" ColumnName="PARAM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewTrainingDatas">
+            <EntityTypeMapping TypeName="TrainingTrackerModel.ViewTrainingData">
+              <MappingFragment StoreEntitySet="ViewTrainingData">
+                <ScalarProperty Name="CLASS_DUR" ColumnName="CLASS_DUR" />
+                <ScalarProperty Name="RPT_ELE_ID" ColumnName="RPT_ELE_ID" />
+                <ScalarProperty Name="REQ_ID" ColumnName="REQ_ID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="MANDATED_BY" ColumnName="MANDATED_BY" />
+                <ScalarProperty Name="ATCTS" ColumnName="ATCTS" />
+                <ScalarProperty Name="TRAIN_DETAILS" ColumnName="TRAIN_DETAILS" />
+                <ScalarProperty Name="RPT_ELE_NAME" ColumnName="RPT_ELE_NAME" />
+                <ScalarProperty Name="REQ_NAME" ColumnName="REQ_NAME" />
+                <ScalarProperty Name="FREQUENCY" ColumnName="FREQUENCY" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="TRAIN_TITLE" ColumnName="TRAIN_TITLE" />
+                <ScalarProperty Name="TRAINID" ColumnName="TRAINID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpAddUserDates" FunctionName="TrainingTrackerModel.Store.SpAddUserDates" />
+          <FunctionImportMapping FunctionImportName="FNSpAddUserDates" FunctionName="TrainingTrackerModel.Store.SpAddUserDates" />
+          <FunctionImportMapping FunctionImportName="SpInsertUserDates" FunctionName="TrainingTrackerModel.Store.SpInsertUserDates" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

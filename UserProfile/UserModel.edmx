@@ -1,0 +1,2411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PA_COMMONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="APPS">
+          <Key>
+            <PropertyRef Name="A_ID" />
+          </Key>
+          <Property Name="A_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="A_PARENT" Type="int" />
+          <Property Name="A_ABBR" Type="varchar" MaxLength="25" />
+          <Property Name="A_ACTIVE" Type="int" Nullable="false" />
+          <Property Name="A_T_TYPE" Type="int" />
+          <Property Name="CLASS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="AUDIT_COMMENT">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_COMMENT" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="CLASS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="AUDIT_DATATYPE">
+          <Key>
+            <PropertyRef Name="DT_ID" />
+          </Key>
+          <Property Name="DT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DT_DESCR" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="DT_ACRONYM" Type="varchar" MaxLength="50" />
+          <Property Name="DT_TYPE" Type="varchar" MaxLength="500" />
+          <Property Name="CLASS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="AUDIT_TRANS">
+          <Key>
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="T_DESCR" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CLASS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="AUDITS">
+          <Key>
+            <PropertyRef Name="AD_ID" />
+          </Key>
+          <Property Name="AD_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_DATATYPE_ID" Type="int" Nullable="false" />
+          <Property Name="AD_DATA_ID" Type="int" Nullable="false" />
+          <Property Name="AD_TRAN_ID" Type="int" Nullable="false" />
+          <Property Name="AD_TIMESTAMP" Type="datetime2" Precision="6" Nullable="false" />
+          <Property Name="AD_POC_ID" Type="int" Nullable="false" />
+          <Property Name="AD_COMMENT_ID" Type="bigint" />
+          <Property Name="AD_FIELD" Type="varchar" MaxLength="200" />
+          <Property Name="AD_OLD_VAL" Type="varchar" MaxLength="4000" />
+          <Property Name="AD_NEW_VAL" Type="varchar" MaxLength="4000" />
+          <Property Name="AD_FIELD_DISPLAY" Type="varchar" MaxLength="200" />
+          <Property Name="AD_TABLE" Type="varchar" MaxLength="200" />
+          <Property Name="AD_OLD_RECORD_ID" Type="varchar" MaxLength="200" />
+          <Property Name="CLASS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="AUDITS4INTERNAL">
+          <Key>
+            <PropertyRef Name="AD_ID" />
+          </Key>
+          <Property Name="AD_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD_DATATYPE_ID" Type="int" Nullable="false" />
+          <Property Name="AD_DATA_ID" Type="int" Nullable="false" />
+          <Property Name="AD_TRAN_ID" Type="int" Nullable="false" />
+          <Property Name="AD_TIMESTAMP" Type="datetime2" Precision="6" Nullable="false" />
+          <Property Name="AD_POC_ID" Type="int" Nullable="false" />
+          <Property Name="AD_COMMENT" Type="varchar" MaxLength="4000" />
+          <Property Name="CLASS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="AWARENESS">
+          <Key>
+            <PropertyRef Name="A_ID" />
+          </Key>
+          <Property Name="A_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_LEVEL" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="A_ORDER" Type="float" Nullable="false" />
+          <Property Name="A_MIN_AWARE" Type="smallint" Nullable="false" />
+          <Property Name="CLASS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="CLASSIFICATION">
+          <Key>
+            <PropertyRef Name="CLASS_ID" />
+          </Key>
+          <Property Name="CLASS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLASS_NAME" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="COMMANDS">
+          <Key>
+            <PropertyRef Name="COMMAND_ID" />
+          </Key>
+          <Property Name="COMMAND_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMMAND" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="50" />
+          <Property Name="ACRONYM" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="COMPANY">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_DESCRIPTION" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="C_TYPE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_RANK_TYPE">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+            <PropertyRef Name="RT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="int" Nullable="false" />
+          <Property Name="RT_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PA_COMMON.common.COMPANY_SERVICE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMPANY_SERVICE">
+          <Key>
+            <PropertyRef Name="CS_ID" />
+            <PropertyRef Name="CS_C_ID" />
+            <PropertyRef Name="CS_S_ID" />
+          </Key>
+          <Property Name="CS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CS_C_ID" Type="int" Nullable="false" />
+          <Property Name="CS_S_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_TYPE">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CT_DESCRIPTION" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONFIG">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_PARAM" Type="varchar" MaxLength="100" />
+          <Property Name="C_VALUE" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="CONST">
+          <Key>
+            <PropertyRef Name="PARAM" />
+          </Key>
+          <Property Name="PARAM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VAL" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="CONTACT_INFO">
+          <Key>
+            <PropertyRef Name="CI_ID" />
+          </Key>
+          <Property Name="CI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="E_ADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="PHONE_DSN" Type="varchar" MaxLength="25" />
+          <Property Name="PHONE_COMM" Type="varchar" MaxLength="25" />
+          <Property Name="PHONE_TOLL_FREE" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="CONTACT_TYPE">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CT_DESCRIPTION" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="COUNTRIES">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CT_NAME" Type="varchar" MaxLength="35" />
+          <Property Name="CT_CODE" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PA_COMMON.common.EMAIL_EXT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EMAIL_EXT">
+          <Key>
+            <PropertyRef Name="EXT" />
+          </Key>
+          <Property Name="EXT" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMAIL_SALUTATIONS">
+          <Key>
+            <PropertyRef Name="ES_ID" />
+          </Key>
+          <Property Name="ES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ES_DESCRIPTION" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="EMAIL_TEMPLATES">
+          <Key>
+            <PropertyRef Name="ETP_ID" />
+          </Key>
+          <Property Name="ETP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ETP_ACRONYM" Type="varchar" MaxLength="50" />
+          <Property Name="ETP_SUBJECT" Type="varchar" MaxLength="1000" />
+          <Property Name="ETP_BODY" Type="varchar" MaxLength="4000" />
+          <Property Name="ETP_TYPE" Type="int" />
+        </EntityType>
+        <EntityType Name="EMAIL_TYPE">
+          <Key>
+            <PropertyRef Name="ETY_ID" />
+          </Key>
+          <Property Name="ETY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ETY_DESCRIPTION" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="FAD">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="F_NAME" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_EMAILS">
+          <Key>
+            <PropertyRef Name="GE_ID" />
+          </Key>
+          <Property Name="GE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GE_FROM" Type="varchar" MaxLength="1000" />
+          <Property Name="GE_TO" Type="varchar" MaxLength="1000" />
+          <Property Name="GE_CC" Type="varchar" MaxLength="1000" />
+          <Property Name="GE_SUBJECT" Type="varchar" MaxLength="1000" />
+          <Property Name="GE_BODY" Type="varchar" MaxLength="4000" />
+          <Property Name="GE_DISABLED" Type="int" />
+          <Property Name="GE_TYPE" Type="int" />
+          <Property Name="GE_TIMESTAMP" Type="datetime2" Precision="6" />
+          <Property Name="GE_DATA_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="IASO">
+          <Key>
+            <PropertyRef Name="IA_ID" />
+          </Key>
+          <Property Name="IA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IA_POC_ID" Type="int" />
+          <Property Name="IA_TYPE" Type="smallint" />
+          <Property Name="IA_LOGIN" Type="varchar" MaxLength="10" />
+          <Property Name="IA_ACTIVITY" Type="int" />
+          <Property Name="IA_APPT" Type="datetime" />
+          <Property Name="IA_EXPIRE" Type="datetime" />
+          <Property Name="IA_LETTER" Type="smallint" />
+          <Property Name="IA_LAST_UPD" Type="datetime" />
+          <Property Name="IA_LAST_UPD_BY" Type="int" />
+          <Property Name="IA_STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="INSTALLATION_TYPE">
+          <Key>
+            <PropertyRef Name="IT_ID" />
+          </Key>
+          <Property Name="IT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IT_DESCRIPTION" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ITSM_SITES">
+          <Key>
+            <PropertyRef Name="IT_ID" />
+          </Key>
+          <Property Name="IT_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IT_NAME" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="IT_CITY" Type="varchar" MaxLength="50" />
+          <Property Name="IT_STATE" Type="varchar" MaxLength="12" />
+          <Property Name="IT_COUNTRY" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOCATIONS">
+          <Key>
+            <PropertyRef Name="LOCATION_ID" />
+          </Key>
+          <Property Name="LOCATION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="STATE" Type="varchar" MaxLength="2" />
+          <Property Name="LATITUDE" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="LONGITUDE" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="REGION_ID" Type="smallint" />
+          <Property Name="COUNTRY" Type="varchar" MaxLength="2" />
+          <Property Name="L_TZ_ID" Type="int" />
+          <Property Name="NETCOPTYPE" Type="smallint" />
+          <Property Name="L_F_ID" Type="int" />
+          <Property Name="L_INSTALLATION_TYPE" Type="int" />
+        </EntityType>
+        <EntityType Name="MACOMS">
+          <Key>
+            <PropertyRef Name="M_ID" />
+          </Key>
+          <Property Name="M_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="M_MACOM" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOTIFICATIONS">
+          <Key>
+            <PropertyRef Name="NOTIFY_ID" />
+          </Key>
+          <Property Name="NOTIFY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOTIFY_START_DATE" Type="datetime" Nullable="false" />
+          <Property Name="NOTIFY_EXPIRATION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="NOTIFY_TITLE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NOTIFY_TEXT" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="NOTIFY_IMAGE" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="NOTIFY_STICKY" Type="int" Nullable="false" />
+          <Property Name="NOTIFY_DURATION" Type="int" />
+          <Property Name="NOTIFY_CLASS_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="NOTIFY_BEFORE_OPEN_FN" Type="varchar" MaxLength="1000" />
+          <Property Name="NOTIFY_AFTER_OPEN_FN" Type="varchar" MaxLength="1000" />
+          <Property Name="NOTIFY_BEFORE_CLOSE_FN" Type="varchar" MaxLength="1000" />
+          <Property Name="NOTIFY_AFTER_CLOSE_FN" Type="varchar" MaxLength="1000" />
+          <Property Name="NOTIFY_ACTIVE" Type="int" Nullable="false" />
+          <Property Name="NOTIFY_DND" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PA_COMMON.common.NOTIFICATIONS_DND' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="NOTIFICATIONS_DND">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+            <PropertyRef Name="NOTIFY_ID" />
+            <PropertyRef Name="DND_DATE" />
+          </Key>
+          <Property Name="POC_ID" Type="int" Nullable="false" />
+          <Property Name="NOTIFY_ID" Type="int" Nullable="false" />
+          <Property Name="DND_DATE" Type="datetime2" Precision="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORG_CONTACT_INFO">
+          <Key>
+            <PropertyRef Name="OCI_ID" />
+          </Key>
+          <Property Name="OCI_O_ID" Type="int" Nullable="false" />
+          <Property Name="OCI_T_ID" Type="int" Nullable="false" />
+          <Property Name="OCI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OCI_C_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ORG_EMAIL_TEMPLATE">
+          <Key>
+            <PropertyRef Name="OET_ID" />
+          </Key>
+          <Property Name="OET_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OET_O_ID" Type="int" />
+          <Property Name="OET_S_ID" Type="int" />
+          <Property Name="OET_T_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ORGS">
+          <Key>
+            <PropertyRef Name="O_ID" />
+          </Key>
+          <Property Name="O_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="O_ORG" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="O_ACRONYM" Type="varchar" MaxLength="20" />
+          <Property Name="O_PARENTORG" Type="int" Nullable="false" />
+          <Property Name="O_TIER" Type="int" />
+          <Property Name="O_APP_ID" Type="int" />
+          <Property Name="O_ISDELETE" Type="int" Nullable="false" />
+          <Property Name="O_PARENT" Type="int" Nullable="false" />
+          <Property Name="O_POPCON_ESC" Type="int" />
+          <Property Name="O_POPCON_CONCUR" Type="int" />
+          <Property Name="O_AWARE_ID" Type="int" />
+          <Property Name="O_ICON" Type="varchar" MaxLength="30" />
+          <Property Name="O_PADCON" Type="int" />
+          <Property Name="O_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="O_SUPPORT_CO" Type="varchar" MaxLength="100" />
+          <Property Name="O_PHONE_CMCL" Type="varchar" MaxLength="25" />
+          <Property Name="O_PHONE_DSN" Type="varchar" MaxLength="25" />
+          <Property Name="O_PHONE_TOLLFREE" Type="varchar" MaxLength="25" />
+          <Property Name="O_IS_ORG_WORKING_RESOLVED" Type="smallint" />
+        </EntityType>
+        <EntityType Name="ORGS_LOCATIONS">
+          <Key>
+            <PropertyRef Name="OL_ID" />
+          </Key>
+          <Property Name="OL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OL_ORG_ID" Type="int" Nullable="false" />
+          <Property Name="OL_LOCATION_ID" Type="int" Nullable="false" />
+          <Property Name="OL_ACTY_LOC_ID" Type="int" Nullable="false" />
+          <Property Name="OL_ISNETCOP" Type="int" Nullable="false" />
+          <Property Name="OL_DISPLAY" Type="varchar" MaxLength="120" />
+          <Property Name="OL_ITSM_ID" Type="varchar" MaxLength="20" />
+          <Property Name="OL_THE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="ORGS_WORKING">
+          <Key>
+            <PropertyRef Name="OW_O_ID" />
+          </Key>
+          <Property Name="OW_O_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORGS_WORKING_THEATER">
+          <Key>
+            <PropertyRef Name="OWT_O_ID" />
+            <PropertyRef Name="OWT_T_ID" />
+          </Key>
+          <Property Name="OWT_O_ID" Type="int" Nullable="false" />
+          <Property Name="OWT_T_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OWNER">
+          <Key>
+            <PropertyRef Name="OWNER_ID" />
+          </Key>
+          <Property Name="OWNER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OWNER" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="OWNEREML" Type="varchar" MaxLength="75" />
+          <Property Name="ORG_ID" Type="int" />
+          <Property Name="O_ORG_LOC" Type="int" />
+          <Property Name="OWNER_ABBR" Type="varchar" MaxLength="20" />
+          <Property Name="O_THE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="POCS">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+          </Key>
+          <Property Name="POC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POC_LAST" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="POC_FIRST" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="POC_MI" Type="varchar" MaxLength="25" />
+          <Property Name="RANK" Type="int" />
+          <Property Name="ORG_LOC" Type="int" />
+          <Property Name="AKO_LOGIN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="SEMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="ALT_EMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="CAC_EDIPI" Type="bigint" Nullable="false" />
+          <Property Name="PHONE_DSN" Type="varchar" MaxLength="25" />
+          <Property Name="PHONE_COMM" Type="varchar" MaxLength="25" />
+          <Property Name="PHONE_EMERG" Type="varchar" MaxLength="25" />
+          <Property Name="LAST_VERIFIED" Type="datetime" />
+          <Property Name="LAST_UPDATE" Type="datetime" />
+          <Property Name="LAST_UPDATE_BY" Type="int" />
+          <Property Name="POC_AVATAR" Type="varchar" MaxLength="255" />
+          <Property Name="COMPANY_ID" Type="int" Nullable="false" />
+          <Property Name="CAC_EDIPI_LAST_UPDATE" Type="datetime" />
+          <Property Name="OVERRIDE_EMAIL_UPDATE" Type="smallint" Nullable="false" />
+          <Property Name="LAST_LOGIN" Type="datetime" />
+          <Property Name="DAYS_LAST_LOGIN" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POCS_ACCT">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+          </Key>
+          <Property Name="POC_ID" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POCS_PREFERENCES">
+          <Key>
+            <PropertyRef Name="PP_P_ID" />
+            <PropertyRef Name="PP_POC_ID" />
+          </Key>
+          <Property Name="PP_P_ID" Type="int" Nullable="false" />
+          <Property Name="PP_POC_ID" Type="int" Nullable="false" />
+          <Property Name="PP_VALUE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREFERENCE_THEATER_VALUES">
+          <Key>
+            <PropertyRef Name="P_ID" />
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="P_ID" Type="int" Nullable="false" />
+          <Property Name="T_ID" Type="int" Nullable="false" />
+          <Property Name="PTV_VALUE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREFERENCE_TYPE">
+          <Key>
+            <PropertyRef Name="PT_ID" />
+          </Key>
+          <Property Name="PT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PT_DESCRIPTION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREFERENCE_VALUES">
+          <Key>
+            <PropertyRef Name="PV_ID" />
+            <PropertyRef Name="PV_VALUE" />
+          </Key>
+          <Property Name="PV_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PV_VALUE" Type="int" Nullable="false" />
+          <Property Name="PV_DESCRIPTION" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREFERENCES">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="P_DESCRIPTION" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="P_PT_ID" Type="int" Nullable="false" />
+          <Property Name="P_PV_ID" Type="int" Nullable="false" />
+          <Property Name="P_PARENT" Type="int" Nullable="false" />
+          <Property Name="P_THE_ID" Type="int" Nullable="false" />
+          <Property Name="P_DEFAULT" Type="int" />
+          <Property Name="P_HTML_NAME" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="RANK_TYPE">
+          <Key>
+            <PropertyRef Name="RT_ID" />
+          </Key>
+          <Property Name="RT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RT_DESCRIPTION" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RANKS">
+          <Key>
+            <PropertyRef Name="RANK_ID" />
+          </Key>
+          <Property Name="RANK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RANK" Type="varchar" MaxLength="5" />
+          <Property Name="TITLE" Type="varchar" MaxLength="30" />
+          <Property Name="TYPE" Type="smallint" />
+          <Property Name="TYPE_ORDER" Type="smallint" />
+        </EntityType>
+        <EntityType Name="REGIONS">
+          <Key>
+            <PropertyRef Name="REGION_ID" />
+          </Key>
+          <Property Name="REGION_ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REGION" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RESTDEMO">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+          </Key>
+          <Property Name="POC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RD_NUMBER" Type="int" Nullable="false" />
+          <Property Name="RD_VARCHAR2" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RD_DATE" Type="datetime" />
+          <Property Name="RD_CLOB" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE_EMAIL">
+          <Key>
+            <PropertyRef Name="E_ID" />
+          </Key>
+          <Property Name="E_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="E_S_ID" Type="int" Nullable="false" />
+          <Property Name="E_TYPE" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="E_ADDRESS" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE_OWNER">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE_TYPE">
+          <Key>
+            <PropertyRef Name="S_T_ID" />
+          </Key>
+          <Property Name="S_T_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_T_DESC" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICES">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_SERVICE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="S_ABBR" Type="varchar" MaxLength="25" />
+          <Property Name="DUPREMOVE" Type="int" />
+        </EntityType>
+        <EntityType Name="STATUS">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_DESCRIPTION" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEAMS">
+          <Key>
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEAM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="T_PARENT" Type="int" Nullable="false" />
+          <Property Name="NUMMBRS" Type="int" />
+          <Property Name="T_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="ID_OLD" Type="int" />
+          <Property Name="STATUS_ID" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEAMS_LOD_MAP">
+          <Key>
+            <PropertyRef Name="T_ID" />
+            <PropertyRef Name="LOD_T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="int" Nullable="false" />
+          <Property Name="LOD_T_ID" Type="int" Nullable="false" />
+          <Property Name="TYPE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEAMS_STATUS">
+          <Key>
+            <PropertyRef Name="STATD" />
+          </Key>
+          <Property Name="STATD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATNME" Type="varchar" MaxLength="25" />
+          <Property Name="STATDESC" Type="varchar" MaxLength="50" />
+          <Property Name="FILLVCANT" Type="smallint" />
+        </EntityType>
+        <EntityType Name="THEATERS">
+          <Key>
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="T_ORG" Type="int" />
+          <Property Name="T_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="POND_POC" Type="int" />
+          <Property Name="MAP_LAT" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="MAP_LNG" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="MAP_ZOOM" Type="int" />
+          <Property Name="CON_ORG" Type="int" />
+          <Property Name="T_LOGO" Type="varchar" MaxLength="30" />
+          <Property Name="T_ABBR" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="THEATERS_SERVICES">
+          <Key>
+            <PropertyRef Name="TS_ID" />
+          </Key>
+          <Property Name="TS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TS_T_ID" Type="int" Nullable="false" />
+          <Property Name="TS_S_ID" Type="int" Nullable="false" />
+          <Property Name="TS_S_PARENT" Type="int" />
+          <Property Name="TS_S_P_POC_ID" Type="int" />
+          <Property Name="TS_S_T_TYPE" Type="int" />
+          <Property Name="TS_S_HASTPOC" Type="decimal" Precision="38" Scale="0" />
+          <Property Name="TS_S_SIGACT_ID" Type="decimal" Precision="38" Scale="0" />
+          <Property Name="TS_S_KPI_ID" Type="decimal" Precision="38" Scale="0" />
+          <Property Name="TS_S_KPI_LABEL_ID" Type="decimal" Precision="38" Scale="0" />
+          <Property Name="TS_S_ACTIVE" Type="int" Nullable="false" />
+          <Property Name="TS_S_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="TS_S_OWNER" Type="int" />
+        </EntityType>
+        <EntityType Name="THEATERTIMEZONE">
+          <Key>
+            <PropertyRef Name="ID_THEATZ" />
+          </Key>
+          <Property Name="ID_THEATZ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="THEATER_ID" Type="int" />
+          <Property Name="TIMEZONE_ID" Type="int" />
+          <Property Name="DISPLAY_ORDER" Type="int" />
+        </EntityType>
+        <EntityType Name="TIMEZONES">
+          <Key>
+            <PropertyRef Name="TZ_ID" />
+          </Key>
+          <Property Name="TZ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GMT_OFFSET" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TIMEZONE" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TMZONE_ABBREV" Type="varchar" MaxLength="20" />
+          <Property Name="TMZONE_REF" Type="varchar" MaxLength="20" />
+          <Property Name="TMZONE_IMG" Type="varchar" MaxLength="20" />
+          <Property Name="DST" Type="int" />
+          <Property Name="TIMEZONE_ALIAS" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="VOTE">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+          </Key>
+          <Property Name="POC_ID" Type="int" Nullable="false" />
+          <Property Name="VOTE" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PA_COMMON.common.VIEW_POCS_ALL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VIEW_POCS_ALL">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+            <PropertyRef Name="POC_LAST" />
+            <PropertyRef Name="POC_FIRST" />
+            <PropertyRef Name="RANK_ID" />
+            <PropertyRef Name="RT_ID" />
+            <PropertyRef Name="RT_DESCRIPTION" />
+            <PropertyRef Name="ORG_LOC_ID" />
+            <PropertyRef Name="AKO_LOGIN" />
+            <PropertyRef Name="STATUS" />
+            <PropertyRef Name="CAC_EDIPI" />
+            <PropertyRef Name="COMPANY_ID" />
+            <PropertyRef Name="OVERRIDE_EMAIL_UPDATE" />
+            <PropertyRef Name="LOCATION_ID" />
+            <PropertyRef Name="LOCATION" />
+            <PropertyRef Name="ORG_ID" />
+            <PropertyRef Name="ORG" />
+            <PropertyRef Name="COMPANY" />
+          </Key>
+          <Property Name="POC_ID" Type="int" Nullable="false" />
+          <Property Name="POC_LAST" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="POC_FIRST" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="POC_MI" Type="varchar" MaxLength="25" />
+          <Property Name="RANK_ID" Type="int" Nullable="false" />
+          <Property Name="RANK" Type="varchar" MaxLength="5" />
+          <Property Name="RT_ID" Type="int" Nullable="false" />
+          <Property Name="RT_DESCRIPTION" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ORG_LOC_ID" Type="int" Nullable="false" />
+          <Property Name="AKO_LOGIN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STATUS" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="SEMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="ALT_EMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="CAC_EDIPI" Type="bigint" Nullable="false" />
+          <Property Name="PHONE_DSN" Type="varchar" MaxLength="25" />
+          <Property Name="PHONE_COMM" Type="varchar" MaxLength="25" />
+          <Property Name="PHONE_EMERG" Type="varchar" MaxLength="25" />
+          <Property Name="LAST_VERIFIED" Type="datetime" />
+          <Property Name="LAST_UPDATE" Type="datetime" />
+          <Property Name="LAST_UPDATE_BY" Type="int" />
+          <Property Name="CAC_EDIPI_LAST_UPDATE" Type="datetime" />
+          <Property Name="POC_AVATAR" Type="varchar" MaxLength="255" />
+          <Property Name="COMPANY_ID" Type="int" Nullable="false" />
+          <Property Name="OVERRIDE_EMAIL_UPDATE" Type="smallint" Nullable="false" />
+          <Property Name="OL_DISPLAY" Type="varchar" MaxLength="120" />
+          <Property Name="LOCATION_ID" Type="int" Nullable="false" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="ORG_ID" Type="int" Nullable="false" />
+          <Property Name="ORG" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="ACTUAL_THEA_ID" Type="int" />
+          <Property Name="THEA_ID" Type="int" />
+          <Property Name="THEA_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="COMPANY" Type="varchar" MaxLength="43" Nullable="false" />
+          <Property Name="LAST_LOGIN" Type="datetime" />
+        </EntityType>
+        <Association Name="PREFTV_P_ID_FK">
+          <End Role="PREFERENCES" Type="Self.PREFERENCES" Multiplicity="1" />
+          <End Role="PREFERENCE_THEATER_VALUES" Type="Self.PREFERENCE_THEATER_VALUES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PREFERENCES">
+              <PropertyRef Name="P_ID" />
+            </Principal>
+            <Dependent Role="PREFERENCE_THEATER_VALUES">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PREFTV_THE_ID_FK">
+          <End Role="THEATERS" Type="Self.THEATERS" Multiplicity="1" />
+          <End Role="PREFERENCE_THEATER_VALUES" Type="Self.PREFERENCE_THEATER_VALUES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THEATERS">
+              <PropertyRef Name="T_ID" />
+            </Principal>
+            <Dependent Role="PREFERENCE_THEATER_VALUES">
+              <PropertyRef Name="T_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PA_COMMONModelStoreContainer">
+          <EntitySet Name="APPS" EntityType="Self.APPS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="AUDIT_COMMENT" EntityType="Self.AUDIT_COMMENT" Schema="common" store:Type="Tables" />
+          <EntitySet Name="AUDIT_DATATYPE" EntityType="Self.AUDIT_DATATYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="AUDIT_TRANS" EntityType="Self.AUDIT_TRANS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="AUDITS" EntityType="Self.AUDITS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="AUDITS4INTERNAL" EntityType="Self.AUDITS4INTERNAL" Schema="common" store:Type="Tables" />
+          <EntitySet Name="AWARENESS" EntityType="Self.AWARENESS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="CLASSIFICATION" EntityType="Self.CLASSIFICATION" Schema="common" store:Type="Tables" />
+          <EntitySet Name="COMMANDS" EntityType="Self.COMMANDS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="COMPANY" EntityType="Self.COMPANY" Schema="common" store:Type="Tables" />
+          <EntitySet Name="COMPANY_RANK_TYPE" EntityType="Self.COMPANY_RANK_TYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="COMPANY_TYPE" EntityType="Self.COMPANY_TYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="CONFIG" EntityType="Self.CONFIG" Schema="common" store:Type="Tables" />
+          <EntitySet Name="CONST" EntityType="Self.CONST" Schema="common" store:Type="Tables" />
+          <EntitySet Name="CONTACT_INFO" EntityType="Self.CONTACT_INFO" Schema="common" store:Type="Tables" />
+          <EntitySet Name="CONTACT_TYPE" EntityType="Self.CONTACT_TYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="COUNTRIES" EntityType="Self.COUNTRIES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="EMAIL_SALUTATIONS" EntityType="Self.EMAIL_SALUTATIONS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="EMAIL_TEMPLATES" EntityType="Self.EMAIL_TEMPLATES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="EMAIL_TYPE" EntityType="Self.EMAIL_TYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="FAD" EntityType="Self.FAD" Schema="common" store:Type="Tables" />
+          <EntitySet Name="GEN_EMAILS" EntityType="Self.GEN_EMAILS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="IASO" EntityType="Self.IASO" Schema="common" store:Type="Tables" />
+          <EntitySet Name="INSTALLATION_TYPE" EntityType="Self.INSTALLATION_TYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ITSM_SITES" EntityType="Self.ITSM_SITES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="LOCATIONS" EntityType="Self.LOCATIONS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="MACOMS" EntityType="Self.MACOMS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="NOTIFICATIONS" EntityType="Self.NOTIFICATIONS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ORG_CONTACT_INFO" EntityType="Self.ORG_CONTACT_INFO" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ORG_EMAIL_TEMPLATE" EntityType="Self.ORG_EMAIL_TEMPLATE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ORGS" EntityType="Self.ORGS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ORGS_LOCATIONS" EntityType="Self.ORGS_LOCATIONS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ORGS_WORKING" EntityType="Self.ORGS_WORKING" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ORGS_WORKING_THEATER" EntityType="Self.ORGS_WORKING_THEATER" Schema="common" store:Type="Tables" />
+          <EntitySet Name="OWNER" EntityType="Self.OWNER" Schema="common" store:Type="Tables" />
+          <EntitySet Name="POCS" EntityType="Self.POCS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="POCS_ACCT" EntityType="Self.POCS_ACCT" Schema="common" store:Type="Tables" />
+          <EntitySet Name="POCS_PREFERENCES" EntityType="Self.POCS_PREFERENCES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="PREFERENCE_THEATER_VALUES" EntityType="Self.PREFERENCE_THEATER_VALUES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="PREFERENCE_TYPE" EntityType="Self.PREFERENCE_TYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="PREFERENCE_VALUES" EntityType="Self.PREFERENCE_VALUES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="PREFERENCES" EntityType="Self.PREFERENCES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="RANK_TYPE" EntityType="Self.RANK_TYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="RANKS" EntityType="Self.RANKS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="REGIONS" EntityType="Self.REGIONS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="RESTDEMO" EntityType="Self.RESTDEMO" Schema="common" store:Type="Tables" />
+          <EntitySet Name="SERVICE_EMAIL" EntityType="Self.SERVICE_EMAIL" Schema="common" store:Type="Tables" />
+          <EntitySet Name="SERVICE_OWNER" EntityType="Self.SERVICE_OWNER" Schema="common" store:Type="Tables" />
+          <EntitySet Name="SERVICE_TYPE" EntityType="Self.SERVICE_TYPE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="SERVICES" EntityType="Self.SERVICES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="STATUS" EntityType="Self.STATUS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="TEAMS" EntityType="Self.TEAMS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="TEAMS_LOD_MAP" EntityType="Self.TEAMS_LOD_MAP" Schema="common" store:Type="Tables" />
+          <EntitySet Name="TEAMS_STATUS" EntityType="Self.TEAMS_STATUS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="THEATERS" EntityType="Self.THEATERS" Schema="common" store:Type="Tables" />
+          <EntitySet Name="THEATERS_SERVICES" EntityType="Self.THEATERS_SERVICES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="THEATERTIMEZONE" EntityType="Self.THEATERTIMEZONE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="TIMEZONES" EntityType="Self.TIMEZONES" Schema="common" store:Type="Tables" />
+          <EntitySet Name="VOTE" EntityType="Self.VOTE" Schema="common" store:Type="Tables" />
+          <EntitySet Name="COMPANY_SERVICE" EntityType="Self.COMPANY_SERVICE" store:Type="Tables" store:Schema="common">
+            <DefiningQuery>SELECT 
+    [COMPANY_SERVICE].[CS_ID] AS [CS_ID], 
+    [COMPANY_SERVICE].[CS_C_ID] AS [CS_C_ID], 
+    [COMPANY_SERVICE].[CS_S_ID] AS [CS_S_ID]
+    FROM [common].[COMPANY_SERVICE] AS [COMPANY_SERVICE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EMAIL_EXT" EntityType="Self.EMAIL_EXT" store:Type="Tables" store:Schema="common">
+            <DefiningQuery>SELECT 
+    [EMAIL_EXT].[EXT] AS [EXT]
+    FROM [common].[EMAIL_EXT] AS [EMAIL_EXT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="NOTIFICATIONS_DND" EntityType="Self.NOTIFICATIONS_DND" store:Type="Tables" store:Schema="common">
+            <DefiningQuery>SELECT 
+    [NOTIFICATIONS_DND].[POC_ID] AS [POC_ID], 
+    [NOTIFICATIONS_DND].[NOTIFY_ID] AS [NOTIFY_ID], 
+    [NOTIFICATIONS_DND].[DND_DATE] AS [DND_DATE]
+    FROM [common].[NOTIFICATIONS_DND] AS [NOTIFICATIONS_DND]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VIEW_POCS_ALL" EntityType="Self.VIEW_POCS_ALL" store:Type="Views" store:Schema="common">
+            <DefiningQuery>SELECT 
+    [VIEW_POCS_ALL].[POC_ID] AS [POC_ID], 
+    [VIEW_POCS_ALL].[POC_LAST] AS [POC_LAST], 
+    [VIEW_POCS_ALL].[POC_FIRST] AS [POC_FIRST], 
+    [VIEW_POCS_ALL].[POC_MI] AS [POC_MI], 
+    [VIEW_POCS_ALL].[RANK_ID] AS [RANK_ID], 
+    [VIEW_POCS_ALL].[RANK] AS [RANK], 
+    [VIEW_POCS_ALL].[RT_ID] AS [RT_ID], 
+    [VIEW_POCS_ALL].[RT_DESCRIPTION] AS [RT_DESCRIPTION], 
+    [VIEW_POCS_ALL].[ORG_LOC_ID] AS [ORG_LOC_ID], 
+    [VIEW_POCS_ALL].[AKO_LOGIN] AS [AKO_LOGIN], 
+    [VIEW_POCS_ALL].[STATUS] AS [STATUS], 
+    [VIEW_POCS_ALL].[EMAIL] AS [EMAIL], 
+    [VIEW_POCS_ALL].[SEMAIL] AS [SEMAIL], 
+    [VIEW_POCS_ALL].[ALT_EMAIL] AS [ALT_EMAIL], 
+    [VIEW_POCS_ALL].[CAC_EDIPI] AS [CAC_EDIPI], 
+    [VIEW_POCS_ALL].[PHONE_DSN] AS [PHONE_DSN], 
+    [VIEW_POCS_ALL].[PHONE_COMM] AS [PHONE_COMM], 
+    [VIEW_POCS_ALL].[PHONE_EMERG] AS [PHONE_EMERG], 
+    [VIEW_POCS_ALL].[LAST_VERIFIED] AS [LAST_VERIFIED], 
+    [VIEW_POCS_ALL].[LAST_UPDATE] AS [LAST_UPDATE], 
+    [VIEW_POCS_ALL].[LAST_UPDATE_BY] AS [LAST_UPDATE_BY], 
+    [VIEW_POCS_ALL].[CAC_EDIPI_LAST_UPDATE] AS [CAC_EDIPI_LAST_UPDATE], 
+    [VIEW_POCS_ALL].[POC_AVATAR] AS [POC_AVATAR], 
+    [VIEW_POCS_ALL].[COMPANY_ID] AS [COMPANY_ID], 
+    [VIEW_POCS_ALL].[OVERRIDE_EMAIL_UPDATE] AS [OVERRIDE_EMAIL_UPDATE], 
+    [VIEW_POCS_ALL].[OL_DISPLAY] AS [OL_DISPLAY], 
+    [VIEW_POCS_ALL].[LOCATION_ID] AS [LOCATION_ID], 
+    [VIEW_POCS_ALL].[LOCATION] AS [LOCATION], 
+    [VIEW_POCS_ALL].[ORG_ID] AS [ORG_ID], 
+    [VIEW_POCS_ALL].[ORG] AS [ORG], 
+    [VIEW_POCS_ALL].[ACTUAL_THEA_ID] AS [ACTUAL_THEA_ID], 
+    [VIEW_POCS_ALL].[THEA_ID] AS [THEA_ID], 
+    [VIEW_POCS_ALL].[THEA_NAME] AS [THEA_NAME], 
+    [VIEW_POCS_ALL].[COMPANY] AS [COMPANY], 
+    [VIEW_POCS_ALL].[LAST_LOGIN] AS [LAST_LOGIN]
+    FROM [common].[VIEW_POCS_ALL] AS [VIEW_POCS_ALL]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="PREFTV_P_ID_FK" Association="Self.PREFTV_P_ID_FK">
+            <End Role="PREFERENCES" EntitySet="PREFERENCES" />
+            <End Role="PREFERENCE_THEATER_VALUES" EntitySet="PREFERENCE_THEATER_VALUES" />
+          </AssociationSet>
+          <AssociationSet Name="PREFTV_THE_ID_FK" Association="Self.PREFTV_THE_ID_FK">
+            <End Role="THEATERS" EntitySet="THEATERS" />
+            <End Role="PREFERENCE_THEATER_VALUES" EntitySet="PREFERENCE_THEATER_VALUES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PA_COMMONModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="APP">
+          <Key>
+            <PropertyRef Name="A_ID" />
+          </Key>
+          <Property Name="A_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="A_PARENT" Type="Int32" />
+          <Property Name="A_ABBR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="A_ACTIVE" Type="Int32" Nullable="false" />
+          <Property Name="A_T_TYPE" Type="Int32" />
+          <Property Name="CLASS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AUDIT_COMMENT">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_COMMENT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLASS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AUDIT_DATATYPE">
+          <Key>
+            <PropertyRef Name="DT_ID" />
+          </Key>
+          <Property Name="DT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DT_DESCR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DT_ACRONYM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DT_TYPE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CLASS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AUDIT_TRANS">
+          <Key>
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="T_DESCR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLASS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AUDIT">
+          <Key>
+            <PropertyRef Name="AD_ID" />
+          </Key>
+          <Property Name="AD_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_DATATYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="AD_DATA_ID" Type="Int32" Nullable="false" />
+          <Property Name="AD_TRAN_ID" Type="Int32" Nullable="false" />
+          <Property Name="AD_TIMESTAMP" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="AD_POC_ID" Type="Int32" Nullable="false" />
+          <Property Name="AD_COMMENT_ID" Type="Int64" />
+          <Property Name="AD_FIELD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AD_OLD_VAL" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="AD_NEW_VAL" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="AD_FIELD_DISPLAY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AD_TABLE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AD_OLD_RECORD_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CLASS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AUDITS4INTERNAL">
+          <Key>
+            <PropertyRef Name="AD_ID" />
+          </Key>
+          <Property Name="AD_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_DATATYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="AD_DATA_ID" Type="Int32" Nullable="false" />
+          <Property Name="AD_TRAN_ID" Type="Int32" Nullable="false" />
+          <Property Name="AD_TIMESTAMP" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="AD_POC_ID" Type="Int32" Nullable="false" />
+          <Property Name="AD_COMMENT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="CLASS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AWARENESS">
+          <Key>
+            <PropertyRef Name="A_ID" />
+          </Key>
+          <Property Name="A_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_LEVEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="A_ORDER" Type="Double" Nullable="false" />
+          <Property Name="A_MIN_AWARE" Type="Int16" Nullable="false" />
+          <Property Name="CLASS_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CLASSIFICATION">
+          <Key>
+            <PropertyRef Name="CLASS_ID" />
+          </Key>
+          <Property Name="CLASS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLASS_NAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="COMMAND">
+          <Key>
+            <PropertyRef Name="COMMAND_ID" />
+          </Key>
+          <Property Name="COMMAND_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMMAND1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACRONYM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="COMPANY">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_DESCRIPTION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_TYPE" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_RANK_TYPE">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+            <PropertyRef Name="RT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="Int32" Nullable="false" />
+          <Property Name="RT_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_TYPE">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CT_DESCRIPTION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONFIG">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_PARAM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C_VALUE" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CONST">
+          <Key>
+            <PropertyRef Name="PARAM" />
+          </Key>
+          <Property Name="PARAM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VAL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CONTACT_INFO">
+          <Key>
+            <PropertyRef Name="CI_ID" />
+          </Key>
+          <Property Name="CI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="E_ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_DSN" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_COMM" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_TOLL_FREE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CONTACT_TYPE">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CT_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="COUNTRy">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CT_NAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="CT_CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EMAIL_SALUTATIONS">
+          <Key>
+            <PropertyRef Name="ES_ID" />
+          </Key>
+          <Property Name="ES_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ES_DESCRIPTION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EMAIL_TEMPLATES">
+          <Key>
+            <PropertyRef Name="ETP_ID" />
+          </Key>
+          <Property Name="ETP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ETP_ACRONYM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETP_SUBJECT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ETP_BODY" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ETP_TYPE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EMAIL_TYPE">
+          <Key>
+            <PropertyRef Name="ETY_ID" />
+          </Key>
+          <Property Name="ETY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ETY_DESCRIPTION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FAD">
+          <Key>
+            <PropertyRef Name="F_ID" />
+          </Key>
+          <Property Name="F_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="F_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_EMAILS">
+          <Key>
+            <PropertyRef Name="GE_ID" />
+          </Key>
+          <Property Name="GE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GE_FROM" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="GE_TO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="GE_CC" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="GE_SUBJECT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="GE_BODY" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="GE_DISABLED" Type="Int32" />
+          <Property Name="GE_TYPE" Type="Int32" />
+          <Property Name="GE_TIMESTAMP" Type="DateTime" Precision="6" />
+          <Property Name="GE_DATA_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IASO">
+          <Key>
+            <PropertyRef Name="IA_ID" />
+          </Key>
+          <Property Name="IA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IA_POC_ID" Type="Int32" />
+          <Property Name="IA_TYPE" Type="Int16" />
+          <Property Name="IA_LOGIN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IA_ACTIVITY" Type="Int32" />
+          <Property Name="IA_APPT" Type="DateTime" Precision="3" />
+          <Property Name="IA_EXPIRE" Type="DateTime" Precision="3" />
+          <Property Name="IA_LETTER" Type="Int16" />
+          <Property Name="IA_LAST_UPD" Type="DateTime" Precision="3" />
+          <Property Name="IA_LAST_UPD_BY" Type="Int32" />
+          <Property Name="IA_STATUS" Type="Int32" />
+        </EntityType>
+        <EntityType Name="INSTALLATION_TYPE">
+          <Key>
+            <PropertyRef Name="IT_ID" />
+          </Key>
+          <Property Name="IT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IT_DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ITSM_SITES">
+          <Key>
+            <PropertyRef Name="IT_ID" />
+          </Key>
+          <Property Name="IT_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IT_NAME" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IT_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IT_STATE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="IT_COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOCATION_ID" />
+          </Key>
+          <Property Name="LOCATION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOCATION1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="LATITUDE" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="LONGITUDE" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="REGION_ID" Type="Int16" />
+          <Property Name="COUNTRY" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="L_TZ_ID" Type="Int32" />
+          <Property Name="NETCOPTYPE" Type="Int16" />
+          <Property Name="L_F_ID" Type="Int32" />
+          <Property Name="L_INSTALLATION_TYPE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MACOM">
+          <Key>
+            <PropertyRef Name="M_ID" />
+          </Key>
+          <Property Name="M_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="M_MACOM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOTIFICATION">
+          <Key>
+            <PropertyRef Name="NOTIFY_ID" />
+          </Key>
+          <Property Name="NOTIFY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOTIFY_START_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NOTIFY_EXPIRATION_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NOTIFY_TITLE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOTIFY_TEXT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOTIFY_IMAGE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOTIFY_STICKY" Type="Int32" Nullable="false" />
+          <Property Name="NOTIFY_DURATION" Type="Int32" />
+          <Property Name="NOTIFY_CLASS_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NOTIFY_BEFORE_OPEN_FN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NOTIFY_AFTER_OPEN_FN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NOTIFY_BEFORE_CLOSE_FN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NOTIFY_AFTER_CLOSE_FN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NOTIFY_ACTIVE" Type="Int32" Nullable="false" />
+          <Property Name="NOTIFY_DND" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORG_CONTACT_INFO">
+          <Key>
+            <PropertyRef Name="OCI_ID" />
+          </Key>
+          <Property Name="OCI_O_ID" Type="Int32" Nullable="false" />
+          <Property Name="OCI_T_ID" Type="Int32" Nullable="false" />
+          <Property Name="OCI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OCI_C_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ORG_EMAIL_TEMPLATE">
+          <Key>
+            <PropertyRef Name="OET_ID" />
+          </Key>
+          <Property Name="OET_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OET_O_ID" Type="Int32" />
+          <Property Name="OET_S_ID" Type="Int32" />
+          <Property Name="OET_T_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ORG">
+          <Key>
+            <PropertyRef Name="O_ID" />
+          </Key>
+          <Property Name="O_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="O_ORG" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="O_ACRONYM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="O_PARENTORG" Type="Int32" Nullable="false" />
+          <Property Name="O_TIER" Type="Int32" />
+          <Property Name="O_APP_ID" Type="Int32" />
+          <Property Name="O_ISDELETE" Type="Int32" Nullable="false" />
+          <Property Name="O_PARENT" Type="Int32" Nullable="false" />
+          <Property Name="O_POPCON_ESC" Type="Int32" />
+          <Property Name="O_POPCON_CONCUR" Type="Int32" />
+          <Property Name="O_AWARE_ID" Type="Int32" />
+          <Property Name="O_ICON" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="O_PADCON" Type="Int32" />
+          <Property Name="O_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="O_SUPPORT_CO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="O_PHONE_CMCL" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="O_PHONE_DSN" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="O_PHONE_TOLLFREE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="O_IS_ORG_WORKING_RESOLVED" Type="Int16" />
+        </EntityType>
+        <EntityType Name="ORGS_LOCATIONS">
+          <Key>
+            <PropertyRef Name="OL_ID" />
+          </Key>
+          <Property Name="OL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OL_ORG_ID" Type="Int32" Nullable="false" />
+          <Property Name="OL_LOCATION_ID" Type="Int32" Nullable="false" />
+          <Property Name="OL_ACTY_LOC_ID" Type="Int32" Nullable="false" />
+          <Property Name="OL_ISNETCOP" Type="Int32" Nullable="false" />
+          <Property Name="OL_DISPLAY" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="OL_ITSM_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OL_THE_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ORGS_WORKING">
+          <Key>
+            <PropertyRef Name="OW_O_ID" />
+          </Key>
+          <Property Name="OW_O_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ORGS_WORKING_THEATER">
+          <Key>
+            <PropertyRef Name="OWT_O_ID" />
+            <PropertyRef Name="OWT_T_ID" />
+          </Key>
+          <Property Name="OWT_O_ID" Type="Int32" Nullable="false" />
+          <Property Name="OWT_T_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OWNER">
+          <Key>
+            <PropertyRef Name="OWNER_ID" />
+          </Key>
+          <Property Name="OWNER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OWNER1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OWNEREML" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_ID" Type="Int32" />
+          <Property Name="O_ORG_LOC" Type="Int32" />
+          <Property Name="OWNER_ABBR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="O_THE_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="POC">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+          </Key>
+          <Property Name="POC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POC_LAST" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POC_FIRST" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POC_MI" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="RANK" Type="Int32" />
+          <Property Name="ORG_LOC" Type="Int32" />
+          <Property Name="AKO_LOGIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SEMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ALT_EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CAC_EDIPI" Type="Int64" Nullable="false" />
+          <Property Name="PHONE_DSN" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_COMM" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_EMERG" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_VERIFIED" Type="DateTime" Precision="3" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Precision="3" />
+          <Property Name="LAST_UPDATE_BY" Type="Int32" />
+          <Property Name="POC_AVATAR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="COMPANY_ID" Type="Int32" Nullable="false" />
+          <Property Name="CAC_EDIPI_LAST_UPDATE" Type="DateTime" Precision="3" />
+          <Property Name="OVERRIDE_EMAIL_UPDATE" Type="Int16" Nullable="false" />
+          <Property Name="LAST_LOGIN" Type="DateTime" Precision="3" />
+          <Property Name="DAYS_LAST_LOGIN" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POCS_ACCT">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+          </Key>
+          <Property Name="POC_ID" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POCS_PREFERENCES">
+          <Key>
+            <PropertyRef Name="PP_P_ID" />
+            <PropertyRef Name="PP_POC_ID" />
+          </Key>
+          <Property Name="PP_P_ID" Type="Int32" Nullable="false" />
+          <Property Name="PP_POC_ID" Type="Int32" Nullable="false" />
+          <Property Name="PP_VALUE" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREFERENCE_THEATER_VALUES">
+          <Key>
+            <PropertyRef Name="P_ID" />
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="P_ID" Type="Int32" Nullable="false" />
+          <Property Name="T_ID" Type="Int32" Nullable="false" />
+          <Property Name="PTV_VALUE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PREFERENCE" Relationship="Self.PREFTV_P_ID_FK" FromRole="PREFERENCE_THEATER_VALUES" ToRole="PREFERENCES" />
+          <NavigationProperty Name="THEATER" Relationship="Self.PREFTV_THE_ID_FK" FromRole="PREFERENCE_THEATER_VALUES" ToRole="THEATERS" />
+        </EntityType>
+        <EntityType Name="PREFERENCE_TYPE">
+          <Key>
+            <PropertyRef Name="PT_ID" />
+          </Key>
+          <Property Name="PT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PT_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREFERENCE_VALUES">
+          <Key>
+            <PropertyRef Name="PV_ID" />
+            <PropertyRef Name="PV_VALUE" />
+          </Key>
+          <Property Name="PV_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PV_VALUE" Type="Int32" Nullable="false" />
+          <Property Name="PV_DESCRIPTION" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREFERENCE">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="P_DESCRIPTION" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="P_PT_ID" Type="Int32" Nullable="false" />
+          <Property Name="P_PV_ID" Type="Int32" Nullable="false" />
+          <Property Name="P_PARENT" Type="Int32" Nullable="false" />
+          <Property Name="P_THE_ID" Type="Int32" Nullable="false" />
+          <Property Name="P_DEFAULT" Type="Int32" />
+          <Property Name="P_HTML_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PREFERENCE_THEATER_VALUES" Relationship="Self.PREFTV_P_ID_FK" FromRole="PREFERENCES" ToRole="PREFERENCE_THEATER_VALUES" />
+        </EntityType>
+        <EntityType Name="RANK_TYPE">
+          <Key>
+            <PropertyRef Name="RT_ID" />
+          </Key>
+          <Property Name="RT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RT_DESCRIPTION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RANK">
+          <Key>
+            <PropertyRef Name="RANK_ID" />
+          </Key>
+          <Property Name="RANK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RANK1" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TYPE" Type="Int16" />
+          <Property Name="TYPE_ORDER" Type="Int16" />
+        </EntityType>
+        <EntityType Name="REGION">
+          <Key>
+            <PropertyRef Name="REGION_ID" />
+          </Key>
+          <Property Name="REGION_ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REGION1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RESTDEMO">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+          </Key>
+          <Property Name="POC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RD_NUMBER" Type="Int32" Nullable="false" />
+          <Property Name="RD_VARCHAR2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RD_CLOB" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE_EMAIL">
+          <Key>
+            <PropertyRef Name="E_ID" />
+          </Key>
+          <Property Name="E_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="E_S_ID" Type="Int32" Nullable="false" />
+          <Property Name="E_TYPE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE_OWNER">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE_TYPE">
+          <Key>
+            <PropertyRef Name="S_T_ID" />
+          </Key>
+          <Property Name="S_T_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_T_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_SERVICE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_ABBR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="DUPREMOVE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="STATUS">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_DESCRIPTION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEAM">
+          <Key>
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEAM1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="T_PARENT" Type="Int32" Nullable="false" />
+          <Property Name="NUMMBRS" Type="Int32" />
+          <Property Name="T_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ID_OLD" Type="Int32" />
+          <Property Name="STATUS_ID" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEAMS_LOD_MAP">
+          <Key>
+            <PropertyRef Name="T_ID" />
+            <PropertyRef Name="LOD_T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="Int32" Nullable="false" />
+          <Property Name="LOD_T_ID" Type="Int32" Nullable="false" />
+          <Property Name="TYPE" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEAMS_STATUS">
+          <Key>
+            <PropertyRef Name="STATD" />
+          </Key>
+          <Property Name="STATD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATNME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="STATDESC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FILLVCANT" Type="Int16" />
+        </EntityType>
+        <EntityType Name="THEATER">
+          <Key>
+            <PropertyRef Name="T_ID" />
+          </Key>
+          <Property Name="T_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="T_ORG" Type="Int32" />
+          <Property Name="T_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="POND_POC" Type="Int32" />
+          <Property Name="MAP_LAT" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="MAP_LNG" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="MAP_ZOOM" Type="Int32" />
+          <Property Name="CON_ORG" Type="Int32" />
+          <Property Name="T_LOGO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="T_ABBR" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PREFERENCE_THEATER_VALUES" Relationship="Self.PREFTV_THE_ID_FK" FromRole="THEATERS" ToRole="PREFERENCE_THEATER_VALUES" />
+        </EntityType>
+        <EntityType Name="THEATERS_SERVICES">
+          <Key>
+            <PropertyRef Name="TS_ID" />
+          </Key>
+          <Property Name="TS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TS_T_ID" Type="Int32" Nullable="false" />
+          <Property Name="TS_S_ID" Type="Int32" Nullable="false" />
+          <Property Name="TS_S_PARENT" Type="Int32" />
+          <Property Name="TS_S_P_POC_ID" Type="Int32" />
+          <Property Name="TS_S_T_TYPE" Type="Int32" />
+          <Property Name="TS_S_HASTPOC" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TS_S_SIGACT_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TS_S_KPI_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TS_S_KPI_LABEL_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TS_S_ACTIVE" Type="Int32" Nullable="false" />
+          <Property Name="TS_S_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TS_S_OWNER" Type="Int32" />
+        </EntityType>
+        <EntityType Name="THEATERTIMEZONE">
+          <Key>
+            <PropertyRef Name="ID_THEATZ" />
+          </Key>
+          <Property Name="ID_THEATZ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="THEATER_ID" Type="Int32" />
+          <Property Name="TIMEZONE_ID" Type="Int32" />
+          <Property Name="DISPLAY_ORDER" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TIMEZONE">
+          <Key>
+            <PropertyRef Name="TZ_ID" />
+          </Key>
+          <Property Name="TZ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GMT_OFFSET" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIMEZONE1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TMZONE_ABBREV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TMZONE_REF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TMZONE_IMG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DST" Type="Int32" />
+          <Property Name="TIMEZONE_ALIAS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VOTE">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+          </Key>
+          <Property Name="POC_ID" Type="Int32" Nullable="false" />
+          <Property Name="VOTE1" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_SERVICE">
+          <Key>
+            <PropertyRef Name="CS_ID" />
+            <PropertyRef Name="CS_C_ID" />
+            <PropertyRef Name="CS_S_ID" />
+          </Key>
+          <Property Name="CS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CS_C_ID" Type="Int32" Nullable="false" />
+          <Property Name="CS_S_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMAIL_EXT">
+          <Key>
+            <PropertyRef Name="EXT" />
+          </Key>
+          <Property Name="EXT" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOTIFICATIONS_DND">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+            <PropertyRef Name="NOTIFY_ID" />
+            <PropertyRef Name="DND_DATE" />
+          </Key>
+          <Property Name="POC_ID" Type="Int32" Nullable="false" />
+          <Property Name="NOTIFY_ID" Type="Int32" Nullable="false" />
+          <Property Name="DND_DATE" Type="DateTime" Nullable="false" Precision="6" />
+        </EntityType>
+        <Association Name="PREFTV_P_ID_FK">
+          <End Role="PREFERENCES" Type="Self.PREFERENCE" Multiplicity="1" />
+          <End Role="PREFERENCE_THEATER_VALUES" Type="Self.PREFERENCE_THEATER_VALUES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PREFERENCES">
+              <PropertyRef Name="P_ID" />
+            </Principal>
+            <Dependent Role="PREFERENCE_THEATER_VALUES">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PREFTV_THE_ID_FK">
+          <End Role="THEATERS" Type="Self.THEATER" Multiplicity="1" />
+          <End Role="PREFERENCE_THEATER_VALUES" Type="Self.PREFERENCE_THEATER_VALUES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THEATERS">
+              <PropertyRef Name="T_ID" />
+            </Principal>
+            <Dependent Role="PREFERENCE_THEATER_VALUES">
+              <PropertyRef Name="T_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PA_COMMON" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="APPS" EntityType="Self.APP" />
+          <EntitySet Name="AUDIT_COMMENT" EntityType="Self.AUDIT_COMMENT" />
+          <EntitySet Name="AUDIT_DATATYPE" EntityType="Self.AUDIT_DATATYPE" />
+          <EntitySet Name="AUDIT_TRANS" EntityType="Self.AUDIT_TRANS" />
+          <EntitySet Name="AUDITS" EntityType="Self.AUDIT" />
+          <EntitySet Name="AUDITS4INTERNAL" EntityType="Self.AUDITS4INTERNAL" />
+          <EntitySet Name="AWARENESSes" EntityType="Self.AWARENESS" />
+          <EntitySet Name="CLASSIFICATIONs" EntityType="Self.CLASSIFICATION" />
+          <EntitySet Name="COMMANDS" EntityType="Self.COMMAND" />
+          <EntitySet Name="COMPANies" EntityType="Self.COMPANY" />
+          <EntitySet Name="COMPANY_RANK_TYPE" EntityType="Self.COMPANY_RANK_TYPE" />
+          <EntitySet Name="COMPANY_TYPE" EntityType="Self.COMPANY_TYPE" />
+          <EntitySet Name="CONFIGs" EntityType="Self.CONFIG" />
+          <EntitySet Name="CONSTs" EntityType="Self.CONST" />
+          <EntitySet Name="CONTACT_INFO" EntityType="Self.CONTACT_INFO" />
+          <EntitySet Name="CONTACT_TYPE" EntityType="Self.CONTACT_TYPE" />
+          <EntitySet Name="COUNTRIES" EntityType="Self.COUNTRy" />
+          <EntitySet Name="EMAIL_SALUTATIONS" EntityType="Self.EMAIL_SALUTATIONS" />
+          <EntitySet Name="EMAIL_TEMPLATES" EntityType="Self.EMAIL_TEMPLATES" />
+          <EntitySet Name="EMAIL_TYPE" EntityType="Self.EMAIL_TYPE" />
+          <EntitySet Name="FADs" EntityType="Self.FAD" />
+          <EntitySet Name="GEN_EMAILS" EntityType="Self.GEN_EMAILS" />
+          <EntitySet Name="IASOes" EntityType="Self.IASO" />
+          <EntitySet Name="INSTALLATION_TYPE" EntityType="Self.INSTALLATION_TYPE" />
+          <EntitySet Name="ITSM_SITES" EntityType="Self.ITSM_SITES" />
+          <EntitySet Name="LOCATIONS" EntityType="Self.LOCATION" />
+          <EntitySet Name="MACOMS" EntityType="Self.MACOM" />
+          <EntitySet Name="NOTIFICATIONS" EntityType="Self.NOTIFICATION" />
+          <EntitySet Name="ORG_CONTACT_INFO" EntityType="Self.ORG_CONTACT_INFO" />
+          <EntitySet Name="ORG_EMAIL_TEMPLATE" EntityType="Self.ORG_EMAIL_TEMPLATE" />
+          <EntitySet Name="ORGS" EntityType="Self.ORG" />
+          <EntitySet Name="ORGS_LOCATIONS" EntityType="Self.ORGS_LOCATIONS" />
+          <EntitySet Name="ORGS_WORKING" EntityType="Self.ORGS_WORKING" />
+          <EntitySet Name="ORGS_WORKING_THEATER" EntityType="Self.ORGS_WORKING_THEATER" />
+          <EntitySet Name="OWNERs" EntityType="Self.OWNER" />
+          <EntitySet Name="POCS" EntityType="Self.POC" />
+          <EntitySet Name="POCS_ACCT" EntityType="Self.POCS_ACCT" />
+          <EntitySet Name="POCS_PREFERENCES" EntityType="Self.POCS_PREFERENCES" />
+          <EntitySet Name="PREFERENCE_THEATER_VALUES" EntityType="Self.PREFERENCE_THEATER_VALUES" />
+          <EntitySet Name="PREFERENCE_TYPE" EntityType="Self.PREFERENCE_TYPE" />
+          <EntitySet Name="PREFERENCE_VALUES" EntityType="Self.PREFERENCE_VALUES" />
+          <EntitySet Name="PREFERENCES" EntityType="Self.PREFERENCE" />
+          <EntitySet Name="RANK_TYPE" EntityType="Self.RANK_TYPE" />
+          <EntitySet Name="RANKS" EntityType="Self.RANK" />
+          <EntitySet Name="REGIONS" EntityType="Self.REGION" />
+          <EntitySet Name="RESTDEMOes" EntityType="Self.RESTDEMO" />
+          <EntitySet Name="SERVICE_EMAIL" EntityType="Self.SERVICE_EMAIL" />
+          <EntitySet Name="SERVICE_OWNER" EntityType="Self.SERVICE_OWNER" />
+          <EntitySet Name="SERVICE_TYPE" EntityType="Self.SERVICE_TYPE" />
+          <EntitySet Name="SERVICES" EntityType="Self.SERVICE" />
+          <EntitySet Name="STATUS" EntityType="Self.STATUS" />
+          <EntitySet Name="TEAMS" EntityType="Self.TEAM" />
+          <EntitySet Name="TEAMS_LOD_MAP" EntityType="Self.TEAMS_LOD_MAP" />
+          <EntitySet Name="TEAMS_STATUS" EntityType="Self.TEAMS_STATUS" />
+          <EntitySet Name="THEATERS" EntityType="Self.THEATER" />
+          <EntitySet Name="THEATERS_SERVICES" EntityType="Self.THEATERS_SERVICES" />
+          <EntitySet Name="THEATERTIMEZONEs" EntityType="Self.THEATERTIMEZONE" />
+          <EntitySet Name="TIMEZONES" EntityType="Self.TIMEZONE" />
+          <EntitySet Name="VOTEs" EntityType="Self.VOTE" />
+          <EntitySet Name="COMPANY_SERVICE" EntityType="Self.COMPANY_SERVICE" />
+          <EntitySet Name="EMAIL_EXT" EntityType="Self.EMAIL_EXT" />
+          <EntitySet Name="NOTIFICATIONS_DND" EntityType="Self.NOTIFICATIONS_DND" />
+          <AssociationSet Name="PREFTV_P_ID_FK" Association="Self.PREFTV_P_ID_FK">
+            <End Role="PREFERENCES" EntitySet="PREFERENCES" />
+            <End Role="PREFERENCE_THEATER_VALUES" EntitySet="PREFERENCE_THEATER_VALUES" />
+          </AssociationSet>
+          <AssociationSet Name="PREFTV_THE_ID_FK" Association="Self.PREFTV_THE_ID_FK">
+            <End Role="THEATERS" EntitySet="THEATERS" />
+            <End Role="PREFERENCE_THEATER_VALUES" EntitySet="PREFERENCE_THEATER_VALUES" />
+          </AssociationSet>
+          <EntitySet Name="VIEW_POCS_ALL" EntityType="PA_COMMONModel.VIEW_POCS_ALL" />
+        </EntityContainer>
+        <EntityType Name="VIEW_POCS_ALL">
+          <Key>
+            <PropertyRef Name="POC_ID" />
+            <PropertyRef Name="POC_LAST" />
+            <PropertyRef Name="POC_FIRST" />
+            <PropertyRef Name="RANK_ID" />
+            <PropertyRef Name="RT_ID" />
+            <PropertyRef Name="RT_DESCRIPTION" />
+            <PropertyRef Name="ORG_LOC_ID" />
+            <PropertyRef Name="AKO_LOGIN" />
+            <PropertyRef Name="STATUS" />
+            <PropertyRef Name="CAC_EDIPI" />
+            <PropertyRef Name="COMPANY_ID" />
+            <PropertyRef Name="OVERRIDE_EMAIL_UPDATE" />
+            <PropertyRef Name="LOCATION_ID" />
+            <PropertyRef Name="LOCATION" />
+            <PropertyRef Name="ORG_ID" />
+            <PropertyRef Name="ORG" />
+            <PropertyRef Name="COMPANY" />
+          </Key>
+          <Property Name="POC_ID" Type="Int32" Nullable="false" />
+          <Property Name="POC_LAST" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="POC_FIRST" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="POC_MI" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="RANK_ID" Type="Int32" Nullable="false" />
+          <Property Name="RANK" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RT_ID" Type="Int32" Nullable="false" />
+          <Property Name="RT_DESCRIPTION" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_LOC_ID" Type="Int32" Nullable="false" />
+          <Property Name="AKO_LOGIN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SEMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ALT_EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CAC_EDIPI" Type="Int64" Nullable="false" />
+          <Property Name="PHONE_DSN" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_COMM" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_EMERG" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_VERIFIED" Type="DateTime" Precision="3" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Precision="3" />
+          <Property Name="LAST_UPDATE_BY" Type="Int32" />
+          <Property Name="CAC_EDIPI_LAST_UPDATE" Type="DateTime" Precision="3" />
+          <Property Name="POC_AVATAR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="COMPANY_ID" Type="Int32" Nullable="false" />
+          <Property Name="OVERRIDE_EMAIL_UPDATE" Type="Int16" Nullable="false" />
+          <Property Name="OL_DISPLAY" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION_ID" Type="Int32" Nullable="false" />
+          <Property Name="LOCATION" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_ID" Type="Int32" Nullable="false" />
+          <Property Name="ORG" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ACTUAL_THEA_ID" Type="Int32" />
+          <Property Name="THEA_ID" Type="Int32" />
+          <Property Name="THEA_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="COMPANY" Type="String" Nullable="false" MaxLength="43" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_LOGIN" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PA_COMMONModelStoreContainer" CdmEntityContainer="PA_COMMON">
+          <EntitySetMapping Name="APPS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.APP">
+              <MappingFragment StoreEntitySet="APPS">
+                <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+                <ScalarProperty Name="A_NAME" ColumnName="A_NAME" />
+                <ScalarProperty Name="A_PARENT" ColumnName="A_PARENT" />
+                <ScalarProperty Name="A_ABBR" ColumnName="A_ABBR" />
+                <ScalarProperty Name="A_ACTIVE" ColumnName="A_ACTIVE" />
+                <ScalarProperty Name="A_T_TYPE" ColumnName="A_T_TYPE" />
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUDIT_COMMENT">
+            <EntityTypeMapping TypeName="PA_COMMONModel.AUDIT_COMMENT">
+              <MappingFragment StoreEntitySet="AUDIT_COMMENT">
+                <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+                <ScalarProperty Name="C_COMMENT" ColumnName="C_COMMENT" />
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUDIT_DATATYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.AUDIT_DATATYPE">
+              <MappingFragment StoreEntitySet="AUDIT_DATATYPE">
+                <ScalarProperty Name="DT_ID" ColumnName="DT_ID" />
+                <ScalarProperty Name="DT_DESCR" ColumnName="DT_DESCR" />
+                <ScalarProperty Name="DT_ACRONYM" ColumnName="DT_ACRONYM" />
+                <ScalarProperty Name="DT_TYPE" ColumnName="DT_TYPE" />
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUDIT_TRANS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.AUDIT_TRANS">
+              <MappingFragment StoreEntitySet="AUDIT_TRANS">
+                <ScalarProperty Name="T_ID" ColumnName="T_ID" />
+                <ScalarProperty Name="T_DESCR" ColumnName="T_DESCR" />
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUDITS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.AUDIT">
+              <MappingFragment StoreEntitySet="AUDITS">
+                <ScalarProperty Name="AD_ID" ColumnName="AD_ID" />
+                <ScalarProperty Name="AD_DATATYPE_ID" ColumnName="AD_DATATYPE_ID" />
+                <ScalarProperty Name="AD_DATA_ID" ColumnName="AD_DATA_ID" />
+                <ScalarProperty Name="AD_TRAN_ID" ColumnName="AD_TRAN_ID" />
+                <ScalarProperty Name="AD_TIMESTAMP" ColumnName="AD_TIMESTAMP" />
+                <ScalarProperty Name="AD_POC_ID" ColumnName="AD_POC_ID" />
+                <ScalarProperty Name="AD_COMMENT_ID" ColumnName="AD_COMMENT_ID" />
+                <ScalarProperty Name="AD_FIELD" ColumnName="AD_FIELD" />
+                <ScalarProperty Name="AD_OLD_VAL" ColumnName="AD_OLD_VAL" />
+                <ScalarProperty Name="AD_NEW_VAL" ColumnName="AD_NEW_VAL" />
+                <ScalarProperty Name="AD_FIELD_DISPLAY" ColumnName="AD_FIELD_DISPLAY" />
+                <ScalarProperty Name="AD_TABLE" ColumnName="AD_TABLE" />
+                <ScalarProperty Name="AD_OLD_RECORD_ID" ColumnName="AD_OLD_RECORD_ID" />
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUDITS4INTERNAL">
+            <EntityTypeMapping TypeName="PA_COMMONModel.AUDITS4INTERNAL">
+              <MappingFragment StoreEntitySet="AUDITS4INTERNAL">
+                <ScalarProperty Name="AD_ID" ColumnName="AD_ID" />
+                <ScalarProperty Name="AD_DATATYPE_ID" ColumnName="AD_DATATYPE_ID" />
+                <ScalarProperty Name="AD_DATA_ID" ColumnName="AD_DATA_ID" />
+                <ScalarProperty Name="AD_TRAN_ID" ColumnName="AD_TRAN_ID" />
+                <ScalarProperty Name="AD_TIMESTAMP" ColumnName="AD_TIMESTAMP" />
+                <ScalarProperty Name="AD_POC_ID" ColumnName="AD_POC_ID" />
+                <ScalarProperty Name="AD_COMMENT" ColumnName="AD_COMMENT" />
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AWARENESSes">
+            <EntityTypeMapping TypeName="PA_COMMONModel.AWARENESS">
+              <MappingFragment StoreEntitySet="AWARENESS">
+                <ScalarProperty Name="A_ID" ColumnName="A_ID" />
+                <ScalarProperty Name="A_LEVEL" ColumnName="A_LEVEL" />
+                <ScalarProperty Name="A_ORDER" ColumnName="A_ORDER" />
+                <ScalarProperty Name="A_MIN_AWARE" ColumnName="A_MIN_AWARE" />
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLASSIFICATIONs">
+            <EntityTypeMapping TypeName="PA_COMMONModel.CLASSIFICATION">
+              <MappingFragment StoreEntitySet="CLASSIFICATION">
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+                <ScalarProperty Name="CLASS_NAME" ColumnName="CLASS_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMANDS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.COMMAND">
+              <MappingFragment StoreEntitySet="COMMANDS">
+                <ScalarProperty Name="COMMAND_ID" ColumnName="COMMAND_ID" />
+                <ScalarProperty Name="COMMAND1" ColumnName="COMMAND" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="ACRONYM" ColumnName="ACRONYM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANies">
+            <EntityTypeMapping TypeName="PA_COMMONModel.COMPANY">
+              <MappingFragment StoreEntitySet="COMPANY">
+                <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+                <ScalarProperty Name="C_DESCRIPTION" ColumnName="C_DESCRIPTION" />
+                <ScalarProperty Name="C_TYPE" ColumnName="C_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_RANK_TYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.COMPANY_RANK_TYPE">
+              <MappingFragment StoreEntitySet="COMPANY_RANK_TYPE">
+                <ScalarProperty Name="CT_ID" ColumnName="CT_ID" />
+                <ScalarProperty Name="RT_ID" ColumnName="RT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_TYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.COMPANY_TYPE">
+              <MappingFragment StoreEntitySet="COMPANY_TYPE">
+                <ScalarProperty Name="CT_ID" ColumnName="CT_ID" />
+                <ScalarProperty Name="CT_DESCRIPTION" ColumnName="CT_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGs">
+            <EntityTypeMapping TypeName="PA_COMMONModel.CONFIG">
+              <MappingFragment StoreEntitySet="CONFIG">
+                <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+                <ScalarProperty Name="C_PARAM" ColumnName="C_PARAM" />
+                <ScalarProperty Name="C_VALUE" ColumnName="C_VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONSTs">
+            <EntityTypeMapping TypeName="PA_COMMONModel.CONST">
+              <MappingFragment StoreEntitySet="CONST">
+                <ScalarProperty Name="PARAM" ColumnName="PARAM" />
+                <ScalarProperty Name="VAL" ColumnName="VAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTACT_INFO">
+            <EntityTypeMapping TypeName="PA_COMMONModel.CONTACT_INFO">
+              <MappingFragment StoreEntitySet="CONTACT_INFO">
+                <ScalarProperty Name="CI_ID" ColumnName="CI_ID" />
+                <ScalarProperty Name="E_ADDRESS" ColumnName="E_ADDRESS" />
+                <ScalarProperty Name="PHONE_DSN" ColumnName="PHONE_DSN" />
+                <ScalarProperty Name="PHONE_COMM" ColumnName="PHONE_COMM" />
+                <ScalarProperty Name="PHONE_TOLL_FREE" ColumnName="PHONE_TOLL_FREE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTACT_TYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.CONTACT_TYPE">
+              <MappingFragment StoreEntitySet="CONTACT_TYPE">
+                <ScalarProperty Name="CT_ID" ColumnName="CT_ID" />
+                <ScalarProperty Name="CT_DESCRIPTION" ColumnName="CT_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUNTRIES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.COUNTRy">
+              <MappingFragment StoreEntitySet="COUNTRIES">
+                <ScalarProperty Name="CT_ID" ColumnName="CT_ID" />
+                <ScalarProperty Name="CT_NAME" ColumnName="CT_NAME" />
+                <ScalarProperty Name="CT_CODE" ColumnName="CT_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMAIL_SALUTATIONS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.EMAIL_SALUTATIONS">
+              <MappingFragment StoreEntitySet="EMAIL_SALUTATIONS">
+                <ScalarProperty Name="ES_ID" ColumnName="ES_ID" />
+                <ScalarProperty Name="ES_DESCRIPTION" ColumnName="ES_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMAIL_TEMPLATES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.EMAIL_TEMPLATES">
+              <MappingFragment StoreEntitySet="EMAIL_TEMPLATES">
+                <ScalarProperty Name="ETP_ID" ColumnName="ETP_ID" />
+                <ScalarProperty Name="ETP_ACRONYM" ColumnName="ETP_ACRONYM" />
+                <ScalarProperty Name="ETP_SUBJECT" ColumnName="ETP_SUBJECT" />
+                <ScalarProperty Name="ETP_BODY" ColumnName="ETP_BODY" />
+                <ScalarProperty Name="ETP_TYPE" ColumnName="ETP_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMAIL_TYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.EMAIL_TYPE">
+              <MappingFragment StoreEntitySet="EMAIL_TYPE">
+                <ScalarProperty Name="ETY_ID" ColumnName="ETY_ID" />
+                <ScalarProperty Name="ETY_DESCRIPTION" ColumnName="ETY_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FADs">
+            <EntityTypeMapping TypeName="PA_COMMONModel.FAD">
+              <MappingFragment StoreEntitySet="FAD">
+                <ScalarProperty Name="F_ID" ColumnName="F_ID" />
+                <ScalarProperty Name="F_NAME" ColumnName="F_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_EMAILS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.GEN_EMAILS">
+              <MappingFragment StoreEntitySet="GEN_EMAILS">
+                <ScalarProperty Name="GE_ID" ColumnName="GE_ID" />
+                <ScalarProperty Name="GE_FROM" ColumnName="GE_FROM" />
+                <ScalarProperty Name="GE_TO" ColumnName="GE_TO" />
+                <ScalarProperty Name="GE_CC" ColumnName="GE_CC" />
+                <ScalarProperty Name="GE_SUBJECT" ColumnName="GE_SUBJECT" />
+                <ScalarProperty Name="GE_BODY" ColumnName="GE_BODY" />
+                <ScalarProperty Name="GE_DISABLED" ColumnName="GE_DISABLED" />
+                <ScalarProperty Name="GE_TYPE" ColumnName="GE_TYPE" />
+                <ScalarProperty Name="GE_TIMESTAMP" ColumnName="GE_TIMESTAMP" />
+                <ScalarProperty Name="GE_DATA_ID" ColumnName="GE_DATA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IASOes">
+            <EntityTypeMapping TypeName="PA_COMMONModel.IASO">
+              <MappingFragment StoreEntitySet="IASO">
+                <ScalarProperty Name="IA_ID" ColumnName="IA_ID" />
+                <ScalarProperty Name="IA_POC_ID" ColumnName="IA_POC_ID" />
+                <ScalarProperty Name="IA_TYPE" ColumnName="IA_TYPE" />
+                <ScalarProperty Name="IA_LOGIN" ColumnName="IA_LOGIN" />
+                <ScalarProperty Name="IA_ACTIVITY" ColumnName="IA_ACTIVITY" />
+                <ScalarProperty Name="IA_APPT" ColumnName="IA_APPT" />
+                <ScalarProperty Name="IA_EXPIRE" ColumnName="IA_EXPIRE" />
+                <ScalarProperty Name="IA_LETTER" ColumnName="IA_LETTER" />
+                <ScalarProperty Name="IA_LAST_UPD" ColumnName="IA_LAST_UPD" />
+                <ScalarProperty Name="IA_LAST_UPD_BY" ColumnName="IA_LAST_UPD_BY" />
+                <ScalarProperty Name="IA_STATUS" ColumnName="IA_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTALLATION_TYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.INSTALLATION_TYPE">
+              <MappingFragment StoreEntitySet="INSTALLATION_TYPE">
+                <ScalarProperty Name="IT_ID" ColumnName="IT_ID" />
+                <ScalarProperty Name="IT_DESCRIPTION" ColumnName="IT_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITSM_SITES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.ITSM_SITES">
+              <MappingFragment StoreEntitySet="ITSM_SITES">
+                <ScalarProperty Name="IT_ID" ColumnName="IT_ID" />
+                <ScalarProperty Name="IT_NAME" ColumnName="IT_NAME" />
+                <ScalarProperty Name="IT_CITY" ColumnName="IT_CITY" />
+                <ScalarProperty Name="IT_STATE" ColumnName="IT_STATE" />
+                <ScalarProperty Name="IT_COUNTRY" ColumnName="IT_COUNTRY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATIONS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.LOCATION">
+              <MappingFragment StoreEntitySet="LOCATIONS">
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="LOCATION1" ColumnName="LOCATION" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="L_TZ_ID" ColumnName="L_TZ_ID" />
+                <ScalarProperty Name="NETCOPTYPE" ColumnName="NETCOPTYPE" />
+                <ScalarProperty Name="L_F_ID" ColumnName="L_F_ID" />
+                <ScalarProperty Name="L_INSTALLATION_TYPE" ColumnName="L_INSTALLATION_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MACOMS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.MACOM">
+              <MappingFragment StoreEntitySet="MACOMS">
+                <ScalarProperty Name="M_ID" ColumnName="M_ID" />
+                <ScalarProperty Name="M_MACOM" ColumnName="M_MACOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTIFICATIONS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.NOTIFICATION">
+              <MappingFragment StoreEntitySet="NOTIFICATIONS">
+                <ScalarProperty Name="NOTIFY_ID" ColumnName="NOTIFY_ID" />
+                <ScalarProperty Name="NOTIFY_START_DATE" ColumnName="NOTIFY_START_DATE" />
+                <ScalarProperty Name="NOTIFY_EXPIRATION_DATE" ColumnName="NOTIFY_EXPIRATION_DATE" />
+                <ScalarProperty Name="NOTIFY_TITLE" ColumnName="NOTIFY_TITLE" />
+                <ScalarProperty Name="NOTIFY_TEXT" ColumnName="NOTIFY_TEXT" />
+                <ScalarProperty Name="NOTIFY_IMAGE" ColumnName="NOTIFY_IMAGE" />
+                <ScalarProperty Name="NOTIFY_STICKY" ColumnName="NOTIFY_STICKY" />
+                <ScalarProperty Name="NOTIFY_DURATION" ColumnName="NOTIFY_DURATION" />
+                <ScalarProperty Name="NOTIFY_CLASS_NAME" ColumnName="NOTIFY_CLASS_NAME" />
+                <ScalarProperty Name="NOTIFY_BEFORE_OPEN_FN" ColumnName="NOTIFY_BEFORE_OPEN_FN" />
+                <ScalarProperty Name="NOTIFY_AFTER_OPEN_FN" ColumnName="NOTIFY_AFTER_OPEN_FN" />
+                <ScalarProperty Name="NOTIFY_BEFORE_CLOSE_FN" ColumnName="NOTIFY_BEFORE_CLOSE_FN" />
+                <ScalarProperty Name="NOTIFY_AFTER_CLOSE_FN" ColumnName="NOTIFY_AFTER_CLOSE_FN" />
+                <ScalarProperty Name="NOTIFY_ACTIVE" ColumnName="NOTIFY_ACTIVE" />
+                <ScalarProperty Name="NOTIFY_DND" ColumnName="NOTIFY_DND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORG_CONTACT_INFO">
+            <EntityTypeMapping TypeName="PA_COMMONModel.ORG_CONTACT_INFO">
+              <MappingFragment StoreEntitySet="ORG_CONTACT_INFO">
+                <ScalarProperty Name="OCI_O_ID" ColumnName="OCI_O_ID" />
+                <ScalarProperty Name="OCI_T_ID" ColumnName="OCI_T_ID" />
+                <ScalarProperty Name="OCI_ID" ColumnName="OCI_ID" />
+                <ScalarProperty Name="OCI_C_ID" ColumnName="OCI_C_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORG_EMAIL_TEMPLATE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.ORG_EMAIL_TEMPLATE">
+              <MappingFragment StoreEntitySet="ORG_EMAIL_TEMPLATE">
+                <ScalarProperty Name="OET_ID" ColumnName="OET_ID" />
+                <ScalarProperty Name="OET_O_ID" ColumnName="OET_O_ID" />
+                <ScalarProperty Name="OET_S_ID" ColumnName="OET_S_ID" />
+                <ScalarProperty Name="OET_T_ID" ColumnName="OET_T_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORGS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.ORG">
+              <MappingFragment StoreEntitySet="ORGS">
+                <ScalarProperty Name="O_ID" ColumnName="O_ID" />
+                <ScalarProperty Name="O_ORG" ColumnName="O_ORG" />
+                <ScalarProperty Name="O_ACRONYM" ColumnName="O_ACRONYM" />
+                <ScalarProperty Name="O_PARENTORG" ColumnName="O_PARENTORG" />
+                <ScalarProperty Name="O_TIER" ColumnName="O_TIER" />
+                <ScalarProperty Name="O_APP_ID" ColumnName="O_APP_ID" />
+                <ScalarProperty Name="O_ISDELETE" ColumnName="O_ISDELETE" />
+                <ScalarProperty Name="O_PARENT" ColumnName="O_PARENT" />
+                <ScalarProperty Name="O_POPCON_ESC" ColumnName="O_POPCON_ESC" />
+                <ScalarProperty Name="O_POPCON_CONCUR" ColumnName="O_POPCON_CONCUR" />
+                <ScalarProperty Name="O_AWARE_ID" ColumnName="O_AWARE_ID" />
+                <ScalarProperty Name="O_ICON" ColumnName="O_ICON" />
+                <ScalarProperty Name="O_PADCON" ColumnName="O_PADCON" />
+                <ScalarProperty Name="O_EMAIL" ColumnName="O_EMAIL" />
+                <ScalarProperty Name="O_SUPPORT_CO" ColumnName="O_SUPPORT_CO" />
+                <ScalarProperty Name="O_PHONE_CMCL" ColumnName="O_PHONE_CMCL" />
+                <ScalarProperty Name="O_PHONE_DSN" ColumnName="O_PHONE_DSN" />
+                <ScalarProperty Name="O_PHONE_TOLLFREE" ColumnName="O_PHONE_TOLLFREE" />
+                <ScalarProperty Name="O_IS_ORG_WORKING_RESOLVED" ColumnName="O_IS_ORG_WORKING_RESOLVED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORGS_LOCATIONS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.ORGS_LOCATIONS">
+              <MappingFragment StoreEntitySet="ORGS_LOCATIONS">
+                <ScalarProperty Name="OL_ID" ColumnName="OL_ID" />
+                <ScalarProperty Name="OL_ORG_ID" ColumnName="OL_ORG_ID" />
+                <ScalarProperty Name="OL_LOCATION_ID" ColumnName="OL_LOCATION_ID" />
+                <ScalarProperty Name="OL_ACTY_LOC_ID" ColumnName="OL_ACTY_LOC_ID" />
+                <ScalarProperty Name="OL_ISNETCOP" ColumnName="OL_ISNETCOP" />
+                <ScalarProperty Name="OL_DISPLAY" ColumnName="OL_DISPLAY" />
+                <ScalarProperty Name="OL_ITSM_ID" ColumnName="OL_ITSM_ID" />
+                <ScalarProperty Name="OL_THE_ID" ColumnName="OL_THE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORGS_WORKING">
+            <EntityTypeMapping TypeName="PA_COMMONModel.ORGS_WORKING">
+              <MappingFragment StoreEntitySet="ORGS_WORKING">
+                <ScalarProperty Name="OW_O_ID" ColumnName="OW_O_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORGS_WORKING_THEATER">
+            <EntityTypeMapping TypeName="PA_COMMONModel.ORGS_WORKING_THEATER">
+              <MappingFragment StoreEntitySet="ORGS_WORKING_THEATER">
+                <ScalarProperty Name="OWT_O_ID" ColumnName="OWT_O_ID" />
+                <ScalarProperty Name="OWT_T_ID" ColumnName="OWT_T_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OWNERs">
+            <EntityTypeMapping TypeName="PA_COMMONModel.OWNER">
+              <MappingFragment StoreEntitySet="OWNER">
+                <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+                <ScalarProperty Name="OWNER1" ColumnName="OWNER" />
+                <ScalarProperty Name="OWNEREML" ColumnName="OWNEREML" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="O_ORG_LOC" ColumnName="O_ORG_LOC" />
+                <ScalarProperty Name="OWNER_ABBR" ColumnName="OWNER_ABBR" />
+                <ScalarProperty Name="O_THE_ID" ColumnName="O_THE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POCS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.POC">
+              <MappingFragment StoreEntitySet="POCS">
+                <ScalarProperty Name="POC_ID" ColumnName="POC_ID" />
+                <ScalarProperty Name="POC_LAST" ColumnName="POC_LAST" />
+                <ScalarProperty Name="POC_FIRST" ColumnName="POC_FIRST" />
+                <ScalarProperty Name="POC_MI" ColumnName="POC_MI" />
+                <ScalarProperty Name="RANK" ColumnName="RANK" />
+                <ScalarProperty Name="ORG_LOC" ColumnName="ORG_LOC" />
+                <ScalarProperty Name="AKO_LOGIN" ColumnName="AKO_LOGIN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SEMAIL" ColumnName="SEMAIL" />
+                <ScalarProperty Name="ALT_EMAIL" ColumnName="ALT_EMAIL" />
+                <ScalarProperty Name="CAC_EDIPI" ColumnName="CAC_EDIPI" />
+                <ScalarProperty Name="PHONE_DSN" ColumnName="PHONE_DSN" />
+                <ScalarProperty Name="PHONE_COMM" ColumnName="PHONE_COMM" />
+                <ScalarProperty Name="PHONE_EMERG" ColumnName="PHONE_EMERG" />
+                <ScalarProperty Name="LAST_VERIFIED" ColumnName="LAST_VERIFIED" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="LAST_UPDATE_BY" ColumnName="LAST_UPDATE_BY" />
+                <ScalarProperty Name="POC_AVATAR" ColumnName="POC_AVATAR" />
+                <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+                <ScalarProperty Name="CAC_EDIPI_LAST_UPDATE" ColumnName="CAC_EDIPI_LAST_UPDATE" />
+                <ScalarProperty Name="OVERRIDE_EMAIL_UPDATE" ColumnName="OVERRIDE_EMAIL_UPDATE" />
+                <ScalarProperty Name="LAST_LOGIN" ColumnName="LAST_LOGIN" />
+                <ScalarProperty Name="DAYS_LAST_LOGIN" ColumnName="DAYS_LAST_LOGIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POCS_ACCT">
+            <EntityTypeMapping TypeName="PA_COMMONModel.POCS_ACCT">
+              <MappingFragment StoreEntitySet="POCS_ACCT">
+                <ScalarProperty Name="POC_ID" ColumnName="POC_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POCS_PREFERENCES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.POCS_PREFERENCES">
+              <MappingFragment StoreEntitySet="POCS_PREFERENCES">
+                <ScalarProperty Name="PP_P_ID" ColumnName="PP_P_ID" />
+                <ScalarProperty Name="PP_POC_ID" ColumnName="PP_POC_ID" />
+                <ScalarProperty Name="PP_VALUE" ColumnName="PP_VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PREFERENCE_THEATER_VALUES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.PREFERENCE_THEATER_VALUES">
+              <MappingFragment StoreEntitySet="PREFERENCE_THEATER_VALUES">
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="T_ID" ColumnName="T_ID" />
+                <ScalarProperty Name="PTV_VALUE" ColumnName="PTV_VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PREFERENCE_TYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.PREFERENCE_TYPE">
+              <MappingFragment StoreEntitySet="PREFERENCE_TYPE">
+                <ScalarProperty Name="PT_ID" ColumnName="PT_ID" />
+                <ScalarProperty Name="PT_DESCRIPTION" ColumnName="PT_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PREFERENCE_VALUES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.PREFERENCE_VALUES">
+              <MappingFragment StoreEntitySet="PREFERENCE_VALUES">
+                <ScalarProperty Name="PV_ID" ColumnName="PV_ID" />
+                <ScalarProperty Name="PV_VALUE" ColumnName="PV_VALUE" />
+                <ScalarProperty Name="PV_DESCRIPTION" ColumnName="PV_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PREFERENCES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.PREFERENCE">
+              <MappingFragment StoreEntitySet="PREFERENCES">
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="P_DESCRIPTION" ColumnName="P_DESCRIPTION" />
+                <ScalarProperty Name="P_PT_ID" ColumnName="P_PT_ID" />
+                <ScalarProperty Name="P_PV_ID" ColumnName="P_PV_ID" />
+                <ScalarProperty Name="P_PARENT" ColumnName="P_PARENT" />
+                <ScalarProperty Name="P_THE_ID" ColumnName="P_THE_ID" />
+                <ScalarProperty Name="P_DEFAULT" ColumnName="P_DEFAULT" />
+                <ScalarProperty Name="P_HTML_NAME" ColumnName="P_HTML_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RANK_TYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.RANK_TYPE">
+              <MappingFragment StoreEntitySet="RANK_TYPE">
+                <ScalarProperty Name="RT_ID" ColumnName="RT_ID" />
+                <ScalarProperty Name="RT_DESCRIPTION" ColumnName="RT_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RANKS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.RANK">
+              <MappingFragment StoreEntitySet="RANKS">
+                <ScalarProperty Name="RANK_ID" ColumnName="RANK_ID" />
+                <ScalarProperty Name="RANK1" ColumnName="RANK" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="TYPE_ORDER" ColumnName="TYPE_ORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGIONS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.REGION">
+              <MappingFragment StoreEntitySet="REGIONS">
+                <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+                <ScalarProperty Name="REGION1" ColumnName="REGION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESTDEMOes">
+            <EntityTypeMapping TypeName="PA_COMMONModel.RESTDEMO">
+              <MappingFragment StoreEntitySet="RESTDEMO">
+                <ScalarProperty Name="POC_ID" ColumnName="POC_ID" />
+                <ScalarProperty Name="RD_NUMBER" ColumnName="RD_NUMBER" />
+                <ScalarProperty Name="RD_VARCHAR2" ColumnName="RD_VARCHAR2" />
+                <ScalarProperty Name="RD_DATE" ColumnName="RD_DATE" />
+                <ScalarProperty Name="RD_CLOB" ColumnName="RD_CLOB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICE_EMAIL">
+            <EntityTypeMapping TypeName="PA_COMMONModel.SERVICE_EMAIL">
+              <MappingFragment StoreEntitySet="SERVICE_EMAIL">
+                <ScalarProperty Name="E_ID" ColumnName="E_ID" />
+                <ScalarProperty Name="E_S_ID" ColumnName="E_S_ID" />
+                <ScalarProperty Name="E_TYPE" ColumnName="E_TYPE" />
+                <ScalarProperty Name="E_ADDRESS" ColumnName="E_ADDRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICE_OWNER">
+            <EntityTypeMapping TypeName="PA_COMMONModel.SERVICE_OWNER">
+              <MappingFragment StoreEntitySet="SERVICE_OWNER">
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICE_TYPE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.SERVICE_TYPE">
+              <MappingFragment StoreEntitySet="SERVICE_TYPE">
+                <ScalarProperty Name="S_T_ID" ColumnName="S_T_ID" />
+                <ScalarProperty Name="S_T_DESC" ColumnName="S_T_DESC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.SERVICE">
+              <MappingFragment StoreEntitySet="SERVICES">
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="S_SERVICE" ColumnName="S_SERVICE" />
+                <ScalarProperty Name="S_ABBR" ColumnName="S_ABBR" />
+                <ScalarProperty Name="DUPREMOVE" ColumnName="DUPREMOVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.STATUS">
+              <MappingFragment StoreEntitySet="STATUS">
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="S_DESCRIPTION" ColumnName="S_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEAMS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.TEAM">
+              <MappingFragment StoreEntitySet="TEAMS">
+                <ScalarProperty Name="T_ID" ColumnName="T_ID" />
+                <ScalarProperty Name="TEAM1" ColumnName="TEAM" />
+                <ScalarProperty Name="T_PARENT" ColumnName="T_PARENT" />
+                <ScalarProperty Name="NUMMBRS" ColumnName="NUMMBRS" />
+                <ScalarProperty Name="T_EMAIL" ColumnName="T_EMAIL" />
+                <ScalarProperty Name="ID_OLD" ColumnName="ID_OLD" />
+                <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEAMS_LOD_MAP">
+            <EntityTypeMapping TypeName="PA_COMMONModel.TEAMS_LOD_MAP">
+              <MappingFragment StoreEntitySet="TEAMS_LOD_MAP">
+                <ScalarProperty Name="T_ID" ColumnName="T_ID" />
+                <ScalarProperty Name="LOD_T_ID" ColumnName="LOD_T_ID" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEAMS_STATUS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.TEAMS_STATUS">
+              <MappingFragment StoreEntitySet="TEAMS_STATUS">
+                <ScalarProperty Name="STATD" ColumnName="STATD" />
+                <ScalarProperty Name="STATNME" ColumnName="STATNME" />
+                <ScalarProperty Name="STATDESC" ColumnName="STATDESC" />
+                <ScalarProperty Name="FILLVCANT" ColumnName="FILLVCANT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THEATERS">
+            <EntityTypeMapping TypeName="PA_COMMONModel.THEATER">
+              <MappingFragment StoreEntitySet="THEATERS">
+                <ScalarProperty Name="T_ID" ColumnName="T_ID" />
+                <ScalarProperty Name="T_ORG" ColumnName="T_ORG" />
+                <ScalarProperty Name="T_NAME" ColumnName="T_NAME" />
+                <ScalarProperty Name="POND_POC" ColumnName="POND_POC" />
+                <ScalarProperty Name="MAP_LAT" ColumnName="MAP_LAT" />
+                <ScalarProperty Name="MAP_LNG" ColumnName="MAP_LNG" />
+                <ScalarProperty Name="MAP_ZOOM" ColumnName="MAP_ZOOM" />
+                <ScalarProperty Name="CON_ORG" ColumnName="CON_ORG" />
+                <ScalarProperty Name="T_LOGO" ColumnName="T_LOGO" />
+                <ScalarProperty Name="T_ABBR" ColumnName="T_ABBR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THEATERS_SERVICES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.THEATERS_SERVICES">
+              <MappingFragment StoreEntitySet="THEATERS_SERVICES">
+                <ScalarProperty Name="TS_ID" ColumnName="TS_ID" />
+                <ScalarProperty Name="TS_T_ID" ColumnName="TS_T_ID" />
+                <ScalarProperty Name="TS_S_ID" ColumnName="TS_S_ID" />
+                <ScalarProperty Name="TS_S_PARENT" ColumnName="TS_S_PARENT" />
+                <ScalarProperty Name="TS_S_P_POC_ID" ColumnName="TS_S_P_POC_ID" />
+                <ScalarProperty Name="TS_S_T_TYPE" ColumnName="TS_S_T_TYPE" />
+                <ScalarProperty Name="TS_S_HASTPOC" ColumnName="TS_S_HASTPOC" />
+                <ScalarProperty Name="TS_S_SIGACT_ID" ColumnName="TS_S_SIGACT_ID" />
+                <ScalarProperty Name="TS_S_KPI_ID" ColumnName="TS_S_KPI_ID" />
+                <ScalarProperty Name="TS_S_KPI_LABEL_ID" ColumnName="TS_S_KPI_LABEL_ID" />
+                <ScalarProperty Name="TS_S_ACTIVE" ColumnName="TS_S_ACTIVE" />
+                <ScalarProperty Name="TS_S_EMAIL" ColumnName="TS_S_EMAIL" />
+                <ScalarProperty Name="TS_S_OWNER" ColumnName="TS_S_OWNER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THEATERTIMEZONEs">
+            <EntityTypeMapping TypeName="PA_COMMONModel.THEATERTIMEZONE">
+              <MappingFragment StoreEntitySet="THEATERTIMEZONE">
+                <ScalarProperty Name="ID_THEATZ" ColumnName="ID_THEATZ" />
+                <ScalarProperty Name="THEATER_ID" ColumnName="THEATER_ID" />
+                <ScalarProperty Name="TIMEZONE_ID" ColumnName="TIMEZONE_ID" />
+                <ScalarProperty Name="DISPLAY_ORDER" ColumnName="DISPLAY_ORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIMEZONES">
+            <EntityTypeMapping TypeName="PA_COMMONModel.TIMEZONE">
+              <MappingFragment StoreEntitySet="TIMEZONES">
+                <ScalarProperty Name="TZ_ID" ColumnName="TZ_ID" />
+                <ScalarProperty Name="GMT_OFFSET" ColumnName="GMT_OFFSET" />
+                <ScalarProperty Name="TIMEZONE1" ColumnName="TIMEZONE" />
+                <ScalarProperty Name="TMZONE_ABBREV" ColumnName="TMZONE_ABBREV" />
+                <ScalarProperty Name="TMZONE_REF" ColumnName="TMZONE_REF" />
+                <ScalarProperty Name="TMZONE_IMG" ColumnName="TMZONE_IMG" />
+                <ScalarProperty Name="DST" ColumnName="DST" />
+                <ScalarProperty Name="TIMEZONE_ALIAS" ColumnName="TIMEZONE_ALIAS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VOTEs">
+            <EntityTypeMapping TypeName="PA_COMMONModel.VOTE">
+              <MappingFragment StoreEntitySet="VOTE">
+                <ScalarProperty Name="POC_ID" ColumnName="POC_ID" />
+                <ScalarProperty Name="VOTE1" ColumnName="VOTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_SERVICE">
+            <EntityTypeMapping TypeName="PA_COMMONModel.COMPANY_SERVICE">
+              <MappingFragment StoreEntitySet="COMPANY_SERVICE">
+                <ScalarProperty Name="CS_ID" ColumnName="CS_ID" />
+                <ScalarProperty Name="CS_C_ID" ColumnName="CS_C_ID" />
+                <ScalarProperty Name="CS_S_ID" ColumnName="CS_S_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMAIL_EXT">
+            <EntityTypeMapping TypeName="PA_COMMONModel.EMAIL_EXT">
+              <MappingFragment StoreEntitySet="EMAIL_EXT">
+                <ScalarProperty Name="EXT" ColumnName="EXT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTIFICATIONS_DND">
+            <EntityTypeMapping TypeName="PA_COMMONModel.NOTIFICATIONS_DND">
+              <MappingFragment StoreEntitySet="NOTIFICATIONS_DND">
+                <ScalarProperty Name="POC_ID" ColumnName="POC_ID" />
+                <ScalarProperty Name="NOTIFY_ID" ColumnName="NOTIFY_ID" />
+                <ScalarProperty Name="DND_DATE" ColumnName="DND_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEW_POCS_ALL">
+            <EntityTypeMapping TypeName="PA_COMMONModel.VIEW_POCS_ALL">
+              <MappingFragment StoreEntitySet="VIEW_POCS_ALL">
+                <ScalarProperty Name="LAST_LOGIN" ColumnName="LAST_LOGIN" />
+                <ScalarProperty Name="COMPANY" ColumnName="COMPANY" />
+                <ScalarProperty Name="THEA_NAME" ColumnName="THEA_NAME" />
+                <ScalarProperty Name="THEA_ID" ColumnName="THEA_ID" />
+                <ScalarProperty Name="ACTUAL_THEA_ID" ColumnName="ACTUAL_THEA_ID" />
+                <ScalarProperty Name="ORG" ColumnName="ORG" />
+                <ScalarProperty Name="ORG_ID" ColumnName="ORG_ID" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="OL_DISPLAY" ColumnName="OL_DISPLAY" />
+                <ScalarProperty Name="OVERRIDE_EMAIL_UPDATE" ColumnName="OVERRIDE_EMAIL_UPDATE" />
+                <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+                <ScalarProperty Name="POC_AVATAR" ColumnName="POC_AVATAR" />
+                <ScalarProperty Name="CAC_EDIPI_LAST_UPDATE" ColumnName="CAC_EDIPI_LAST_UPDATE" />
+                <ScalarProperty Name="LAST_UPDATE_BY" ColumnName="LAST_UPDATE_BY" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="LAST_VERIFIED" ColumnName="LAST_VERIFIED" />
+                <ScalarProperty Name="PHONE_EMERG" ColumnName="PHONE_EMERG" />
+                <ScalarProperty Name="PHONE_COMM" ColumnName="PHONE_COMM" />
+                <ScalarProperty Name="PHONE_DSN" ColumnName="PHONE_DSN" />
+                <ScalarProperty Name="CAC_EDIPI" ColumnName="CAC_EDIPI" />
+                <ScalarProperty Name="ALT_EMAIL" ColumnName="ALT_EMAIL" />
+                <ScalarProperty Name="SEMAIL" ColumnName="SEMAIL" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="AKO_LOGIN" ColumnName="AKO_LOGIN" />
+                <ScalarProperty Name="ORG_LOC_ID" ColumnName="ORG_LOC_ID" />
+                <ScalarProperty Name="RT_DESCRIPTION" ColumnName="RT_DESCRIPTION" />
+                <ScalarProperty Name="RT_ID" ColumnName="RT_ID" />
+                <ScalarProperty Name="RANK" ColumnName="RANK" />
+                <ScalarProperty Name="RANK_ID" ColumnName="RANK_ID" />
+                <ScalarProperty Name="POC_MI" ColumnName="POC_MI" />
+                <ScalarProperty Name="POC_FIRST" ColumnName="POC_FIRST" />
+                <ScalarProperty Name="POC_LAST" ColumnName="POC_LAST" />
+                <ScalarProperty Name="POC_ID" ColumnName="POC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

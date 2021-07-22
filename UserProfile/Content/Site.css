@@ -1,0 +1,283 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.table th, .table td {
+    padding: 0.40rem;
+    padding-right: 0px;
+ 
+}
+.row{
+  margin-right: 0px;
+  margin-top: 1em;
+}
+.navbar-right{
+    margin-right: 0px;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+}
+.container{
+    width: 100%!important;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#avatarCol{
+   padding-left: 3em;
+}
+
+#topRow{
+    margin-top: 1em;
+}
+#phoneTbl {
+    border: thin solid lightgray;
+}
+#phoneTblHead{
+    background: lightgray;
+}
+#addPhoneBtn {
+    text-align: right;
+    background: lightgray;
+    padding-right: 10px;
+}
+#rightTbl{
+    margin-left: 7em;
+}
+.btn-secondary{
+   /* display:none;*/
+}
+tbody {
+    font-size: 14px;
+}
+
+/*------Trainings Datatable-------*/
+#headerCol {
+    padding: 1.0em;
+    margin-left: 2.5em;
+    background: #f7f7f7;
+    border-radius: 5px;
+    border: rgb(128 128 128) thin solid;
+    min-height: 570px;
+    max-height: 590px;
+    line-height: 13px;
+}
+#nameLb {
+    float: left;
+    padding: 0px;
+}
+#lbTrainings{
+    font-size: 18px;
+}
+.dataTables_scrollHead {
+    width: 50%;
+}
+.dataTables_scrollHeadInner{
+    width:100%!important;
+}
+.table{
+    width:100%!important;
+    font-size:14px;
+}
+#mainFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+    color: black;
+    /*  border-top: lightgray thick solid;
+    border-bottom: lightgray thick solid;*/
+    background: #cecdcd;
+}
+#mainFooterDiv {
+    height: 100%;
+    width: 60%;
+    overflow: hidden;
+    float: left;
+}
+#mainFooterDiv ul li {
+    float: left;
+    padding-left: 20px;
+}
+#mainFooterDiv ul {
+    list-style-type: none;
+    margin-top: 8px;
+}
+#footerNote{
+    float:right;
+    margin-top: 10px;
+    margin-right: 60px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+   
+}
+
+/*---------MODALS-----------*/
+#updateTrainingModalContent {
+    width: 61%;
+}
+#addTrainingModalContent {
+    width: 61%;
+}
+#modalHeader {
+    font-size: 24px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    background-image: linear-gradient(#bfbfbf, #999 50%, #8f8f8f);
+    color: white;
+}
+.modal-header {
+    background-color: white;
+}
+#txtUpdateTrainTitle {
+    border: none;
+    font-size: 26px;
+    font-family: Times, "Times New Roman", serif;
+    padding: 0px;
+}
+textarea#txtUpdateTrainTitle {
+    resize: none;
+}
+#updateTrainTitle {
+    border: none;
+    font-size: 26px;
+    font-family: Times, "Times New Roman", serif;
+    padding: 0px;
+}
+textarea#updateTrainTitle {
+    resize: none;
+}
+
+#datePickerFormGroup{
+    margin-left: 15px;
+}
+#classDate {
+    width: 20.6em;
+    height: 2.5em;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+#clasDate {
+    width: 20.6em;
+    height: 2.5em;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+#fileupload {
+    width: 87%;
+    margin-left: 30px;
+    font-size: 14px;
+}
+#btRow {
+    margin: 2em;
+    margin-left: 300px;
+}
+#btClose{
+    margin-right: 25px;
+}
+.row {
+    font-size: 14px;
+}
+
+
+/*------------Sched Modal-----------*/
+#scheduledDatesContent {
+    width: 30em;
+}
+
+#schedLb {
+    text-align: right;
+    padding-right: 0px;
+}
+
+#txtSchedTrainTitle {
+    resize: none;
+}
+
+#typeDropdown {
+    padding-left: 0px;
+}
+
+#selectSched {
+    width: 18em;
+}
+#typeRow{
+
+}
+select option {
+    margin: 40px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    border-radius: 0px 0px 5px 5px;
+    color: black;
+}
+
+#btnSchedRow {
+    margin-left: 23em;
+    margin-bottom: 1em;
+}
+
+#btClose {
+    margin-top: 0px;
+    margin-right: 1em;
+    color: white;
+}
+
+#btSubmit {
+    margin-top: 0px;
+    color: white;
+}
+/*------------Training Details Modal-----------*/
+#optionRow {
+    margin-left: 5em;
+}
+#urlLb {
+    margin-top: 0px;
+}
+#netcomArcyberCB {
+    margin-left: 1em;
+}
+#radioBtnYesNo {
+    margin-left: 5em;
+}
+#durationFormGroup {
+    margin-left: 4em;
+}
+#txtArea {
+    margin-left: 1em;
+    width: 100%;
+}
+#txtarea2{
+    width: 98%;
+}
+#btnRow{
+    float: right;
+}
+
+/*-------------ATCTS MODAL-----------*/
+#atctsHeader {
+    display: block;
+}
+.modal-header {
+    background-color: white;
+}
+.boldText {
+    font-weight: bold !important;
+}
+#colorTxt {
+    color: red;
+    font-weight: bold;
+}
